@@ -304,7 +304,7 @@ Move-Item *.htm licensesAndReadmes
 
 #Remove-Item ModuleManager.2.5.1.dll
 Write-Output "Removing old ModuleManager Versions"
-Remove-Item ModuleManager.2.6.1.dll, ModuleManager.2.6.2.dll, ModuleManager.2.6.3.dll
+Remove-Item ModuleManager.2.6.1.dll, ModuleManager.2.6.3.dll, ModuleManager.2.6.5.dll
 
 # Remove unneded parts
 Write-Output "Removing unneeded parts"
@@ -335,7 +335,7 @@ Remove-Item -Recurse -Force UniversalStorage
 Set-Location ..
 
 # KW Rocketry
-Set-Location ../../KWRocketry/Parts
+Set-Location KWRocketry/Parts
 Set-Location Fuel
 Remove-Item -Recurse -Force KW_Universal_Tanks
 Set-Location ../Structural
