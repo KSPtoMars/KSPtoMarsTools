@@ -1,5 +1,5 @@
 #
-# KSPtoMars Windows Modpack v1.5.0
+# KSPtoMars Windows Modpack v1.5.3
 # Written by Sven Frenzel (sven@frenzel.dk) with some contributions by Darko Pilav (darko.pilav@gmail.com)
 #
 # The MIT License (MIT)
@@ -354,6 +354,17 @@ Remove-Item -Recurse -Force FreyjaEng, FreyjaRCS, FreyjaTrunk
 Set-Location ../Odin2
 Remove-Item -Recurse -Force OdinFairings, OdinPod, OdinRCS, OdinServiceModule
 Set-Location ../../..
+
+# Squad
+Set-Location Squad
+Remove-Item -Recurse -Force Agencies, Flags
+Set-Location Parts/Aero
+Remove-Item -Recurse -Force fairings
+Set-Location ../FuelTank
+Remove-Item -Recurse -Force RCSFuel*, Size3*, adapter*, fuelTankJ*, fuelTankO*, fuelTankT100, fuelTank200, fuelTank400, fuelTank800, fuelTankX*, mk2*, mk3*, xenon*
+Set-Location ../../..
+
+
 
 # UKS/MKS
 Set-Location UmbraSpaceIndustries/Kolonization
