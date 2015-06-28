@@ -25,17 +25,6 @@
 # THE SOFTWARE.
 #
 #
-#
-# ChangeLog
-#
-# v1.5.2 (2015-06-28)
-#  - started work on removing further unnecessary parts. So far removed:
-#    * EngineIgnitor Parts 
-#    * DMagic Universal Storage Parts
-#
-# v1.5.1 (2015-06-28)
-#  - updated all mods to their newest versions  
-#
 
 [CmdletBinding()]
 Param(
@@ -75,7 +64,7 @@ if (Test-Path ksp2m_mods){
 new-item -itemtype directory ksp2m_mods > $null
 Set-Location ksp2m_mods
 
-If ($b){
+
   Write-Output "Preparing beauty install."
 }ElseIf ($c){
   Write-Output "Preparing base install."
@@ -342,6 +331,11 @@ Set-Location ../Structural
 Remove-Item -Recurse -Force KWFuelAdapter, KWFlatadapter*
 Set-Location ../../..
 
+# MechJeb2
+Set-Location MechJeb2
+Remove-Item -Recurse -Force Parts
+Set-Location ..
+
 # NovaPunch2 
 Set-Location NovaPunch2
 Remove-Item -Recurse -Force Agencies, Flags
@@ -363,7 +357,6 @@ Remove-Item -Recurse -Force fairings
 Set-Location ../FuelTank
 Remove-Item -Recurse -Force RCSFuel*, Size3*, adapter*, fuelTankJ*, fuelTankO*, fuelTankT100, fuelTank200, fuelTank400, fuelTank800, fuelTankX*, mk2*, mk3*, xenon*
 Set-Location ../../..
-
 
 
 # UKS/MKS
