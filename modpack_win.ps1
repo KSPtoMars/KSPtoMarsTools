@@ -64,7 +64,7 @@ if (Test-Path ksp2m_mods){
 new-item -itemtype directory ksp2m_mods > $null
 Set-Location ksp2m_mods
 
-
+If ($b) {
   Write-Output "Preparing beauty install."
 }ElseIf ($c){
   Write-Output "Preparing base install."
