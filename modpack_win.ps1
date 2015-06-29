@@ -99,7 +99,7 @@ $baseModPack = @(
   @("http://github.com/KSP-RO/RealSolarSystem/releases/download/v10.0.2/RealSolarSystem_v10.0.2.zip", "RealSolarSystem.zip"),
   @("http://github.com/RemoteTechnologiesGroup/RemoteTech/releases/download/1.6.5/RemoteTech-1.6.5.zip", "RemoteTech.zip"),
   @("http://github.com/KSP-RO/RSS-Textures/releases/download/v10.0/2048.zip", "2048.zip"),
-  @("http://github.com/Crzyrndm/RW-Saturatable/releases/download/1.10.1/Saturatable.RW.v1.10.1.zip", "Saturatable.RW.zip"),
+  @("http://github.com/Crzyrndm/RW-Saturatable/releases/download/1.10.1/Saturatable.RW.v1.10.1.0.zip", "Saturatable.RW.zip"),
   @("http://github.com/taraniselsu/TacLifeSupport/releases/download/v0.11.1.20/TacLifeSupport_0.11.1.20.zip", "TacLifeSupport.zip"),
   @("http://github.com/ducakar/TextureReplacer/releases/download/v2.4.6/TextureReplacer-2.4.6.zip", "TextureReplacer.zip"),
   @("http://blizzy.de/toolbar/Toolbar-1.7.9.zip", "Toolbar.zip"),
