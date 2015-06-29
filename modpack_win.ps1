@@ -194,7 +194,7 @@ if ($b -or $f){
     @("http://kerbalstuff.com/mod/224/Rover%20Wheel%20Sounds/download/1.2", "RoverWheelSounds.zip"),
     @("http://kerbalstuff.com/mod/700/Scatterer/download/0.151", "Scatterer.zip"),
     @("http://github.com/HappyFaceIndustries/BetterTimeWarp/releases/download/2.0/BetterTimeWarp_2.0.zip", "BetterTimeWarp.zip"),
-    @("http://ksp.sarbian.com/jenkins/job/SmokeScreen/40/artifact/SmokeScreen-2.6.3.0.zip", "SmokeScreen.zip"),
+    @("https://ksp.sarbian.com/jenkins/job/SmokeScreen/40/artifact/SmokeScreen-2.6.3.0.zip", "SmokeScreen.zip"),
     @("http://github.com/richardbunt/Telemachus/releases/download/v1.4.29.0/Telemachus_1_4_29_0.zip", "Telemachus.zip") 
   )
 
