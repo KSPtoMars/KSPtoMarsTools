@@ -41,6 +41,28 @@ function unzip($file) {
   [io.compression.zipfile]::ExtractToDirectory($file, $pwd)
 }
 
+# Function for downloading files in arrays.
+function download($array) {
+  $index = 0
+  $status = True
+  foreach ($dlfile in $array) {
+    $index = $index + 1
+    if ($status){$errorcount = 0}
+    Write-Output "[$index of $($array.count)]: $($dlfile[1])"
+    Invoke-WebRequest -Uri $dlfile[0] -OutFile $dlfile[1]
+    if (-not $?) {
+      $status = $?
+      $index = $index - 1
+      $errorcount = $errorcount + 1
+      if ($errorcount -lt 3){
+        Write-Output "Failed to download $($dlfile[1]). Trying again."
+      }else{
+        Write-Output "Failed to download $($dlfile[1]) three (3) consecutive times. `r`nPlease make sure you have an internet connection and the newest version`r`n of the KSPtoMars mod installer."
+      }
+    }
+  }
+}
+
 Write-Output "`r`nThis is v1.5.5-dev of the ksp2mars modpack script for windows.`r`n`r`n"
 
 $startingPath = $PWD
@@ -130,12 +152,7 @@ $baseModPack = @(
 )
 
 Write-Output "Downloading Base Mods."
-$index = 0
-foreach ($baseMod in $baseModPack) {
-  $index = $index+1
-  Write-Output "[$index of $($baseModPack.count)]: $($baseMod[1])"
-  Invoke-WebRequest -Uri $baseMod[0] -OutFile $baseMod[1]
-}
+download($baseModPack)
 
 # Dev mods!
 if (-not $b -and -not $c){
@@ -157,12 +174,7 @@ if (-not $b -and -not $c){
   )
 
   Write-Output "Downloading Dev Mods."
-  $index = 0
-  foreach ($devMod in $devModPack) {
-	$index = $index+1
-    Write-Output "[$index of $($devModPack.count)]: $($devMod[1])"
-    Invoke-WebRequest -Uri $devMod[0] -OutFile $devMod[1]
-  }
+  download($devModPack)
 }
 
 # Beauty mods!
@@ -187,12 +199,7 @@ if ($b -or $f){
   )
 
   Write-Output "Downloading Dev Mods."
-  $index = 0
-  foreach ($beautyMod in $beautyModPack) {
-  	$index = $index+1
-    Write-Output "[$index of $($beautyModPack.count)]: $($beautyMod[1])"
-    Invoke-WebRequest -Uri $beautyMod[0] -OutFile $beautyMod[1]
-  }
+  download($beautyModPack)
 }
 
 # Unzip all the mods
