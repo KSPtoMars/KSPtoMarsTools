@@ -1,5 +1,5 @@
 #
-# KSPtoMars Windows Modpack v1.6.2-dev
+# KSPtoMars Windows Modpack v1.6.5-dev
 # Written by Sven Frenzel (sven@frenzel.dk) with some contributions by Darko Pilav (darko.pilav@gmail.com)
 #
 # The MIT License (MIT)
@@ -34,7 +34,7 @@ Param(
   [switch]$c,
   [switch]$f
 )
-$BackupPath = "$k\Squad_bak_[guid]::NewGuid().Guid"
+$BackupPath = [guid]::NewGuid().Guid
 
 #Definition of function for easy unzipping later on
 function unzip($file) {
@@ -75,7 +75,7 @@ function rollback($RPATH){
 }
 
 
-Write-Output "`r`nThis is v1.6.2-dev of the ksp2mars modpack script for windows.`r`n`r`n"
+Write-Output "`r`nThis is v1.6.5-dev of the ksp2mars modpack script for windows.`r`n`r`n"
 
 $startingPath = $PWD
 
@@ -161,6 +161,7 @@ $baseModPack = @(
   @("http://ksptomars.org/public/AIES_Aerospace151.zip", "AIES_Aerospace151.zip"),
   @("http://dl.dropboxusercontent.com/u/72893034/AIES_Patches/AIES_Node_Patch.cfg.zip", "AIES_Node_Patch.cfg.zip"),
   @("http://kerbalstuff.com/mod/361/NEBULA%20Decals/download/1.01", "NebulaDecals.zip"),
+  @("http://github.com/Swamp-Ig/ProceduralParts/releases/download/v1.1.6/ProceduralParts-1.1.6.zip", "ProceduralParts.zip"),
   @("http://ksptomars.org/public/KSPtoMars.zip", "KSPtoMars.zip")
 )
 
@@ -174,8 +175,7 @@ if (-not $b -and -not $c){
     @("http://github.com/malahx/QuickSearch/releases/download/v1.13/QuickSearch-1.13.zip", "QuickSearch.zip"),
     @("http://github.com/snjo/FShangarExtender/releases/download/v3.3/FShangarExtender_3_3.zip", "FShangarExtender.zip"),
     @("http://github.com/Crzyrndm/FilterExtension/releases/download/2.3.0/Filter.Extensions.v2.3.0.1.zip", "Filter.Extensions.zip"),
-    @("http://github.com/Swamp-Ig/ProceduralParts/releases/download/v1.1.6/ProceduralParts-1.1.6.zip", "ProceduralParts.zip"),
-    @("http://ksptomars.org/public/HyperEdit-1.4.1_for-KSP-1.0.zip", "HyperEdit.zip"),
+	@("http://ksptomars.org/public/HyperEdit-1.4.1_for-KSP-1.0.zip", "HyperEdit.zip"),
     @("http://github.com/malahx/QuickScroll/releases/download/v1.31/QuickScroll-1.31.zip", "QuickScroll.zip"),
     @("http://github.com/MachXXV/EditorExtensions/releases/download/v2.12/EditorExtensions_v2.12.zip", "EditorExtensions.zip"),
     @("http://github.com/nodrog6/LightsOut/releases/download/v0.1.4/LightsOut-v0.1.4.zip", "LightsOut.zip"),
@@ -245,7 +245,7 @@ Get-ChildItem ./*/* -Filter GameData |
 foreach-Object {
   Copy-Item -force -recurse $_/* ../GameData
 }
-Set-Location $k
+Set-Location ..
 
 # Custom move for base install
 Copy-Item -force -recurse ksp2m_mods/CrossFeedEnabler/* GameData
@@ -413,11 +413,11 @@ Set-Location ../../..
 
 # Squad
 Set-Location Squad
-Remove-Item -Recurse -Force Agencies, Flags
+Remove-Item -Recurse -Force Agencies, Flags 2> $null
 Set-Location Parts/Aero
-Remove-Item -Recurse -Force fairings
+Remove-Item -Recurse -Force fairings 2> $null
 Set-Location ../FuelTank
-Remove-Item -Recurse -Force RCSFuel*, Size3*, adapter*, fuelTankJ*, fuelTankO*, fuelTankT100, fuelTankT200, fuelTankT400, fuelTankT800, fuelTankX*, mk2*, mk3*, xenon*
+Remove-Item -Recurse -Force RCSFuel*, Size3*, adapter*, fuelTankJ*, fuelTankO*, fuelTankT100, fuelTankT200, fuelTankT400, fuelTankT800, fuelTankX*, mk2*, mk3*, xenon* 2> $null
 Set-Location ../../..
 
 # UKS/MKS
