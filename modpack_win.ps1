@@ -295,7 +295,7 @@ Move-Item *.htm licensesAndReadmes
 Write-Output "Removing old ModuleManager Versions"
 Remove-Item ModuleManager.2.6.1.dll, ModuleManager.2.6.3.dll, ModuleManager.2.6.5.dll
 
-# Remove unneded parts
+# Remove unneeded parts
 Write-Output "Removing unneeded parts"
 # HabitatPack
 Remove-Item -Recurse -Force HabitatPack/Parts/Basemount
@@ -326,9 +326,9 @@ Set-Location ..
 # KW Rocketry
 Set-Location KWRocketry/Parts
 Set-Location Fuel
-Remove-Item -Recurse -Force KW_Universal_Tanks
-Set-Location ../Structural
-Remove-Item -Recurse -Force KWFuelAdapter, KWFlatadapter*
+Remove-Item -Recurse -Force KW_Universal_Tanks, KWRadialSAS
+Set-Location ../Fairings
+Remove-Item -Recurse -Force UnifiedFairings
 Set-Location ../../..
 
 # MechJeb2
@@ -399,6 +399,10 @@ Set-Location RealismOverhaul/Parts
 Remove-Item -Recurse -Force NoseconeCockpit
 Set-Location ../..
 
+# HabitatPack
+Set-Location HabitatPack/Parts
+Remove-Item -Recurse -Force orbitalorb
+Set-Location ../..
 
 
 Set-Location $startingPath
