@@ -291,12 +291,28 @@ if (Test-Path *.htm){
 Move-Item *.htm licensesAndReadmes
 }
 
-#Remove-Item ModuleManager.2.5.1.dll
+# Remove old versions of ModuleManager
 Write-Output "Removing old ModuleManager Versions"
+if (Test-Path ModuleManager.2.5.1.dll) {
+Remove-Item ModuleManager.2.5.1.dll
+}
 Remove-Item ModuleManager.2.6.1.dll, ModuleManager.2.6.3.dll, ModuleManager.2.6.5.dll
+
 
 # Remove unneded parts
 Write-Output "Removing unneeded parts"
+
+# AIES
+Set-Location AIES_Aerospace
+Remove-Item -Recurse -Force Aero
+Set-Location Command
+Remove-Item -Recurse -Force AIESorbiterpod
+Set-Location ../FuelTank
+Remove-Item -Recurse -Force "AIESfueltank 7k", "AIESFueltank superior3", AIESFueltanksul, AIESrcs125ra, "AIEStank MR1", AIEStank1300cl, AIEStankMER1, AIEStankMER6, AIEStankminsond
+Set-Location ../Structure
+Remove-Item -Recurse -Force "AIES *", AIESadapterrads, AIESbase*, AIESdec*, "AIESdesacoplador sat1"
+Set-Location ../..
+
 # HabitatPack
 Remove-Item -Recurse -Force HabitatPack/Parts/Basemount
 
