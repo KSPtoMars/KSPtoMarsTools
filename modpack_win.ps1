@@ -149,6 +149,7 @@ $baseModPack = @(
   @("http://ksptomars.org/public/AIES_Aerospace151.zip", "AIES_Aerospace151.zip"),
   @("http://dl.dropboxusercontent.com/u/72893034/AIES_Patches/AIES_Node_Patch.cfg.zip", "AIES_Node_Patch.cfg.zip"),
   @("http://kerbalstuff.com/mod/361/NEBULA%20Decals/download/1.01", "NebulaDecals.zip")
+  @("http://ksptomars.org/public/KSPtoMars.zip", "KSPtoMars.zip")
 )
 
 Write-Output "Downloading Base Mods."
