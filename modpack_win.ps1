@@ -34,6 +34,7 @@ Param(
   [switch]$c,
   [switch]$f
 )
+$BackupPath = $k/Squad_bak_[guid]::NewGuid().Guid
 
 #Definition of function for easy unzipping later on
 function unzip($file) {
@@ -77,7 +78,6 @@ function rollback(){
 Write-Output "`r`nThis is v1.6.2-dev of the ksp2mars modpack script for windows.`r`n`r`n"
 
 $startingPath = $PWD
-$BackupPath = $k/Squad_bak_6544643158
 
 if (Test-Path $k/GameData/Squad) {
   Set-Location $k
