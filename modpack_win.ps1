@@ -99,7 +99,7 @@ $baseModPack = @(
   @("http://github.com/KSP-RO/RealSolarSystem/releases/download/v10.0.2/RealSolarSystem_v10.0.2.zip", "RealSolarSystem.zip"),
   @("http://github.com/RemoteTechnologiesGroup/RemoteTech/releases/download/1.6.5/RemoteTech-1.6.5.zip", "RemoteTech.zip"),
   @("http://github.com/KSP-RO/RSS-Textures/releases/download/v10.0/2048.zip", "2048.zip"),
-  @("http://github.com/Crzyrndm/RW-Saturatable/releases/download/1.10.1/Saturatable.RW.v1.10.1.zip", "Saturatable.RW.zip"),
+  @("http://github.com/Crzyrndm/RW-Saturatable/releases/download/1.10.1/Saturatable.RW.v1.10.1.0.zip", "Saturatable.RW.zip"),
   @("http://github.com/taraniselsu/TacLifeSupport/releases/download/v0.11.1.20/TacLifeSupport_0.11.1.20.zip", "TacLifeSupport.zip"),
   @("http://github.com/ducakar/TextureReplacer/releases/download/v2.4.6/TextureReplacer-2.4.6.zip", "TextureReplacer.zip"),
   @("http://blizzy.de/toolbar/Toolbar-1.7.9.zip", "Toolbar.zip"),
@@ -340,13 +340,23 @@ Set-Location ..
 Set-Location NovaPunch2
 Remove-Item -Recurse -Force Agencies, Flags
 Set-Location Parts
-Remove-Item -Recurse -Force ControlPods, Fairings, FuelTanks, NoseCone, SAS, YawmasterCSM
+Remove-Item -Recurse -Force ControlPods, Fairings, FuelTanks, NoseCone, SAS, YawmasterCSM, RCS
 Set-Location CouplersAndAdapters
 Remove-Item -Recurse -Force NP_interstage*
 Set-Location ../Freyja
 Remove-Item -Recurse -Force FreyjaEng, FreyjaRCS, FreyjaTrunk
 Set-Location ../Odin2
 Remove-Item -Recurse -Force OdinFairings, OdinPod, OdinRCS, OdinServiceModule
+Set-Location ../Parachutes
+Remove-Item -Recurse -Force NP_chute_FuelTankCapParachute
+Set-Location ../Misc
+Remove-Item -Recurse -Force NP_Leg_HeavyLeg
+Set-Location ../Thor
+Remove-Item -Recurse -Force NP_ThorLanderRCS, NP_ThorLanderRCSTank, NP_ThorAscentPackage, NP_ThorDescentPackage, NP_ThorLanderStrut2, NP_ThorLanderASAS
+Set-Location ../LaunchEscape
+Remove-Item -Recurse -Force NP_LES_RCS_nanocone
+Set-Location ../Odin2
+Remove-Item -Recurse -Force OdinShield
 Set-Location ../../..
 
 # Squad
@@ -355,21 +365,41 @@ Remove-Item -Recurse -Force Agencies, Flags
 Set-Location Parts/Aero
 Remove-Item -Recurse -Force fairings
 Set-Location ../FuelTank
-Remove-Item -Recurse -Force RCSFuel*, Size3*, adapter*, fuelTankJ*, fuelTankO*, fuelTankT100, fuelTank200, fuelTank400, fuelTank800, fuelTankX*, mk2*, mk3*, xenon*
+Remove-Item -Recurse -Force RCSFuel*, Size3*, adapter*, fuelTankJ*, fuelTankO*, fuelTankT100, fuelTankT200, fuelTankT400, fuelTankT800, fuelTankX*, mk2*, mk3*, xenon*
 Set-Location ../../..
-
 
 # UKS/MKS
 Set-Location UmbraSpaceIndustries/Kolonization
 Remove-Item -Recurse -Force Flags
 Set-Location Parts
 Remove-Item -force MK3*, MKS_A*, MKS_C*, MKS_D*, MKS_E*, MKS_F*, MKS_K*, MKS_L*, MKS_M*, MKS_P*, MKS_S*, MKS_W*, MKV_Ag*, MKV_B*, MKV_L*, MKV_Pod.cfg, MKV_W*, MiniRover.cfg, OKS_A*, OKS_Col*, OKS_Ha*, OKS_K*, OKS_P*, OKS_S*, OKS_W*, OctoLander.cfg, ScanOMatic.cfg
+Set-Location ../../Kontainers
+Remove-Item -force Kontainer*
+Set-Location Assets
+Remove-Item -force Kontainer*
 Set-Location ../../..
 
 # UniversalStorage
 Set-Location UniversalStorage
 Remove-Item -Recurse -Force Flags
 Set-Location ..
+
+# TACLS
+Set-Location ThunderAerospace
+Remove-Item -Recurse -Force TacLifeSupportContainers, TacLifeSupportHexCans, TacLifeSupportMFT
+Set-Location ..
+
+# Taurus HCV
+Set-Location RSCapsuledyne/Parts
+Remove-Item -Recurse -Force Engine, FuelTank, OreTank, Nuke
+Set-Location ../..
+
+# Realism Overhaul
+Set-Location RealismOverhaul/Parts
+Remove-Item -Recurse -Force NoseconeCockpit
+Set-Location ../..
+
+
 
 Set-Location $startingPath
 
