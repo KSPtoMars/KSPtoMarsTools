@@ -34,7 +34,7 @@ Param(
   [switch]$c,
   [switch]$f
 )
-$BackupPath = $k/Squad_bak_[guid]::NewGuid().Guid
+$BackupPath = "$k\Squad_bak_[guid]::NewGuid().Guid"
 
 #Definition of function for easy unzipping later on
 function unzip($file) {
@@ -59,18 +59,18 @@ function download($array) {
         Write-Output "Failed to download $($dlfile[1]). Trying again."
       }else{
         Write-Output "Failed to download $($dlfile[1]) three (3) consecutive times. `r`nPlease make sure you have an internet connection and the newest version`r`n of the KSPtoMars mod installer."
-        rollback()
+        rollback($BackupPath)
       }
     }
   }
 }
 
 # Rollback function
-function rollback(){
+function rollback($RPATH){
   Set-Location $k
   Remove-Item -Recurse -Force GameData
   new-item -itemtype directory GameData > $null
-  Move-Item -Recurse $BackupPath GameData/Squad
+  Move-Item -Recurse $RPATH GameData/Squad
   exit
 }
 
