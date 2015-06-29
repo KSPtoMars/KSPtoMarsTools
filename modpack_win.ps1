@@ -1,5 +1,5 @@
 #
-# KSPtoMars Windows Modpack v1.6.1-dev
+# KSPtoMars Windows Modpack v1.6.2-dev
 # Written by Sven Frenzel (sven@frenzel.dk) with some contributions by Darko Pilav (darko.pilav@gmail.com)
 #
 # The MIT License (MIT)
@@ -69,21 +69,22 @@ function rollback(){
   Set-Location $k
   Remove-Item -Recurse -Force GameData
   new-item -itemtype directory GameData > $null
-  Move-Item -Recurse Squad_bak GameData/Squad
+  Move-Item -Recurse $BackupPath GameData/Squad
   exit
 }
 
 
-Write-Output "`r`nThis is v1.6.1-dev of the ksp2mars modpack script for windows.`r`n`r`n"
+Write-Output "`r`nThis is v1.6.2-dev of the ksp2mars modpack script for windows.`r`n`r`n"
 
 $startingPath = $PWD
+$BackupPath = $k/Squad_bak_6544643158
 
 if (Test-Path $k/GameData/Squad) {
   Set-Location $k
-  Move-Item GameData/Squad Squad_bak
+  Move-Item GameData/Squad $BackupPath
   Remove-Item -Recurse -Force GameData
   new-item -itemtype directory GameData > $null
-  Copy-Item -Recurse Squad_bak GameData/Squad
+  Copy-Item -Recurse $BackupPath GameData/Squad
 }else{
   Write-Output "The specified path does not seem to contain a valid install of KSP."
   exit
@@ -459,7 +460,7 @@ Remove-Item -Recurse -Force NoseconeCockpit
 Set-Location ../..
 }
 
-Remove-Item -Recurse -Force $k/Squad_bak
+Remove-Item -Recurse -Force $BackupPath
 Set-Location $startingPath
 
 Write-Output "`r`n`r`nFinished!"
