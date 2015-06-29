@@ -1,5 +1,5 @@
 #
-# KSPtoMars Windows Modpack v1.5.3
+# KSPtoMars Windows Modpack v1.5.5-dev
 # Written by Sven Frenzel (sven@frenzel.dk) with some contributions by Darko Pilav (darko.pilav@gmail.com)
 #
 # The MIT License (MIT)
@@ -41,7 +41,7 @@ function unzip($file) {
   [io.compression.zipfile]::ExtractToDirectory($file, $pwd)
 }
 
-Write-Output "`r`nThis is v1.5.0 of the ksp2mars modpack script for windows.`r`n`r`n"
+Write-Output "`r`nThis is v1.5.5-dev of the ksp2mars modpack script for windows.`r`n`r`n"
 
 $startingPath = $PWD
 
@@ -298,7 +298,6 @@ Remove-Item ModuleManager.2.5.1.dll
 }
 Remove-Item ModuleManager.2.6.1.dll, ModuleManager.2.6.3.dll, ModuleManager.2.6.5.dll
 
-
 # Remove unneded parts
 Write-Output "Removing unneeded parts"
 
@@ -317,6 +316,8 @@ Set-Location ../..
 Remove-Item -Recurse -Force HabitatPack/Parts/Basemount
 
 # FASA
+# We're not removing FASA parts for now.
+<#
 Set-Location FASA
 Remove-Item -Recurse -Force Agencies, Flags, ICBM, Mercury, Resources
 Set-Location Apollo
@@ -328,6 +329,7 @@ Remove-Item -Recurse -Force FASA_ASAS_MiniComp, FASA_Fairings_Plate_2m, FASA_Gem
 Set-Location ../Probes
 Remove-Item -Recurse -Force Explorer, Pioneer, Probe_Parachute_Box
 Set-Location ../..
+#>
 
 # Engine Ignitor
 Set-Location EngineIgnitor
