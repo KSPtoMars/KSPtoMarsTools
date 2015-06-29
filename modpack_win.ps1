@@ -1,5 +1,5 @@
 #
-# KSPtoMars Windows Modpack v1.5.5-dev
+# KSPtoMars Windows Modpack v1.6.0-dev
 # Written by Sven Frenzel (sven@frenzel.dk) with some contributions by Darko Pilav (darko.pilav@gmail.com)
 #
 # The MIT License (MIT)
@@ -63,11 +63,11 @@ function download($array) {
   }
 }
 
-Write-Output "`r`nThis is v1.5.5-dev of the ksp2mars modpack script for windows.`r`n`r`n"
+Write-Output "`r`nThis is v1.6.0-dev of the ksp2mars modpack script for windows.`r`n`r`n"
 
 $startingPath = $PWD
 
-if (Test-Path $k/GameData) {
+if (Test-Path $k/GameData/Squad) {
   Set-Location $k
   Move-Item GameData/Squad Squad_bak
   Remove-Item -Recurse -Force GameData
@@ -152,7 +152,7 @@ $baseModPack = @(
   @("http://ksptomars.org/public/KSPtoMars.zip", "KSPtoMars.zip")
 )
 
-Write-Output "Downloading Base Mods."
+Write-Output "`r`nDownloading Base Mods."
 download($baseModPack)
 
 # Dev mods!
@@ -174,7 +174,7 @@ if (-not $b -and -not $c){
     @("http://kerbalstuff.com/mod/776/Take%20Command/download/1.1.4", "TakeCommand.zip")
   )
 
-  Write-Output "Downloading Dev Mods."
+  Write-Output "`r`nDownloading Dev Mods."
   download($devModPack)
 }
 
@@ -199,13 +199,13 @@ if ($b -or $f){
     @("http://github.com/richardbunt/Telemachus/releases/download/v1.4.29.0/Telemachus_1_4_29_0.zip", "Telemachus.zip") 
   )
 
-  Write-Output "Downloading Dev Mods."
+  Write-Output "`r`nDownloading Beauty Mods."
   download($beautyModPack)
 }
 
 # Unzip all the mods
 
-Write-Output "Extracting Mods"
+Write-Output "`r`nExtracting Mods"
 $childItems = Get-ChildItem ./ -Filter *.zip
 $index = 0
 $childItems |
@@ -228,12 +228,12 @@ foreach-Object {
 }
 
 # Move all the mods to GameData folder
-Write-Output "Moving Mods"
+Write-Output "`r`nMoving Mods"
 Get-ChildItem ./*/* -Filter GameData |
 foreach-Object {
   Copy-Item -force -recurse $_/* ../GameData
 }
-Set-Location ..
+Set-Location $k
 
 # Custom move for base install
 Copy-Item -force -recurse ksp2m_mods/CrossFeedEnabler/* GameData
@@ -273,7 +273,7 @@ Copy-Item -force -recurse ksp2m_mods/RoverWheelSounds/* GameData
 }
 
 # Fix some configs
-Write-Output "Adapting Configs"
+Write-Output "`r`nAdapting Configs"
 Copy-Item -recurse -force ksp2m_mods/RealismOverhaul/GameData/* GameData #We do this to make sure that we use the RO/RSS configs and not the configs provided by plugins installed after RO/RSS
 Copy-Item -force ksp2m_mods/RealismOverhaul/GameData/RealismOverhaul/RemoteTech_Settings.cfg GameData/RemoteTech/RemoteTech_Settings.cfg
 Copy-Item -force ksp2m_mods/EngineIgnitor.dll GameData/EngineIgnitor/Plugins/EngineIgnitor.dll
@@ -282,10 +282,10 @@ Copy-Item -force ksp2m_mods/StockPlusController.cfg GameData
 Copy-Item -force ksp2m_mods/AIES_Node_Patch.cfg/AIES_Node_Patch.cfg GameData
 
 # Clean up
-Write-Output "Starting Clean up"
+Write-Output "`r`nStarting Clean up"
 Remove-Item -Recurse -Force ksp2m_mods
 Set-Location GameData
-new-item -itemtype directory licensesAndReadmes
+new-item -itemtype directory licensesAndReadmes > $null
 if (Test-Path *.txt){
 Move-Item *.txt licensesAndReadmes
 }
@@ -300,16 +300,17 @@ Move-Item *.htm licensesAndReadmes
 }
 
 # Remove old versions of ModuleManager
-Write-Output "Removing old ModuleManager Versions"
+Write-Output "`r`nRemoving old ModuleManager Versions"
 if (Test-Path ModuleManager.2.5.1.dll) {
 Remove-Item ModuleManager.2.5.1.dll
 }
 Remove-Item ModuleManager.2.6.1.dll, ModuleManager.2.6.3.dll, ModuleManager.2.6.5.dll
 
 # Remove unneeded parts
-Write-Output "Removing unneeded parts"
+Write-Output "`r`nRemoving unneeded parts"
 
 # AIES
+if (Test-Path -d AIES_Aerospace){
 Set-Location AIES_Aerospace
 Remove-Item -Recurse -Force Aero
 Set-Location Command
@@ -319,13 +320,19 @@ Remove-Item -Recurse -Force "AIESfueltank 7k", "AIESFueltank superior3", AIESFue
 Set-Location ../Structure
 Remove-Item -Recurse -Force "AIES *", AIESadapterrads, AIESbase*, AIESdec*, "AIESdesacoplador sat1"
 Set-Location ../..
+}
 
 # HabitatPack
-Remove-Item -Recurse -Force HabitatPack/Parts/Basemount
+if (Test-Path -d HabitatPack){
+Set-Location HabitatPack/Parts
+Remove-Item -Recurse -Force Basemount, orbitalorb
+Set-Location ../..
+}
 
 # FASA
 # We're not removing FASA parts for now.
 <#
+if (Test-Path -d FASA){
 Set-Location FASA
 Remove-Item -Recurse -Force Agencies, Flags, ICBM, Mercury, Resources
 Set-Location Apollo
@@ -337,32 +344,38 @@ Remove-Item -Recurse -Force FASA_ASAS_MiniComp, FASA_Fairings_Plate_2m, FASA_Gem
 Set-Location ../Probes
 Remove-Item -Recurse -Force Explorer, Pioneer, Probe_Parachute_Box
 Set-Location ../..
+}
 #>
 
 # Engine Ignitor
-Set-Location EngineIgnitor
-Remove-Item -Recurse -Force Parts
-Set-Location ..
+if(Test-Path -d EngineIgnitor){
+Remove-Item -Recurse -Force EngineIgnitor/Parts
+}
 
 # DMagic -> UniversalStorage Parts
-Set-Location DMagicOrbitalScience
-Remove-Item -Recurse -Force UniversalStorage
-Set-Location ..
+if(Test-Path -d DMagicOrbitalScience){
+Remove-Item -Recurse -Force DMagicOrbitalScience/UniversalStorage
+}
 
 # KW Rocketry
+if(Test-Path -d KWRocketry){
 Set-Location KWRocketry/Parts
 Set-Location Fuel
-Remove-Item -Recurse -Force KW_Universal_Tanks, KWRadialSAS
+Remove-Item -Recurse -Force KW_Universal_Tanks
+Set-Location ../Control
+Remove-Item -Recurse -Force KWRadialSAS 
 Set-Location ../Fairings
 Remove-Item -Recurse -Force UnifiedFairings
 Set-Location ../../..
+}
 
 # MechJeb2
-Set-Location MechJeb2
-Remove-Item -Recurse -Force Parts
-Set-Location ..
+if(Test-Path -d MechJeb2){
+Remove-Item -Recurse -Force MechJeb2/Parts
+}
 
 # NovaPunch2 
+if(Test-Path -d NovaPunch2){
 Set-Location NovaPunch2
 Remove-Item -Recurse -Force Agencies, Flags
 Set-Location Parts
@@ -384,6 +397,7 @@ Remove-Item -Recurse -Force NP_LES_RCS_nanocone
 Set-Location ../Odin2
 Remove-Item -Recurse -Force OdinShield
 Set-Location ../../..
+}
 
 # Squad
 Set-Location Squad
@@ -395,6 +409,7 @@ Remove-Item -Recurse -Force RCSFuel*, Size3*, adapter*, fuelTankJ*, fuelTankO*, 
 Set-Location ../../..
 
 # UKS/MKS
+if(Test-Path -d UmbraSpaceIndustries){
 Set-Location UmbraSpaceIndustries/Kolonization
 Remove-Item -Recurse -Force Flags
 Set-Location Parts
@@ -404,33 +419,36 @@ Remove-Item -force Kontainer*
 Set-Location Assets
 Remove-Item -force Kontainer*
 Set-Location ../../..
+}
 
 # UniversalStorage
-Set-Location UniversalStorage
-Remove-Item -Recurse -Force Flags
+if(Test-Path -d UniversalStorage){
+Remove-Item -Recurse -Force UniversalStorage/Flags
 Set-Location ..
+}
 
 # TACLS
+if(Test-Path -d ThunderAerospace){
 Set-Location ThunderAerospace
 Remove-Item -Recurse -Force TacLifeSupportContainers, TacLifeSupportHexCans, TacLifeSupportMFT
 Set-Location ..
+}
 
 # Taurus HCV
+if(Test-Path -d RSCapsuledyne){
 Set-Location RSCapsuledyne/Parts
 Remove-Item -Recurse -Force Engine, FuelTank, OreTank, Nuke
 Set-Location ../..
+}
 
 # Realism Overhaul
+if(Test-Path -d RealismOverhaul){
 Set-Location RealismOverhaul/Parts
 Remove-Item -Recurse -Force NoseconeCockpit
 Set-Location ../..
-
-# HabitatPack
-Set-Location HabitatPack/Parts
-Remove-Item -Recurse -Force orbitalorb
-Set-Location ../..
+}
 
 
 Set-Location $startingPath
 
-Write-Output "Finished!"
+Write-Output "`r`n`r`nFinished!"
