@@ -1,5 +1,5 @@
 #
-# KSPtoMars Windows Modpack v1.6.0-dev
+# KSPtoMars Windows Modpack v1.6.1-dev
 # Written by Sven Frenzel (sven@frenzel.dk) with some contributions by Darko Pilav (darko.pilav@gmail.com)
 #
 # The MIT License (MIT)
@@ -58,12 +58,23 @@ function download($array) {
         Write-Output "Failed to download $($dlfile[1]). Trying again."
       }else{
         Write-Output "Failed to download $($dlfile[1]) three (3) consecutive times. `r`nPlease make sure you have an internet connection and the newest version`r`n of the KSPtoMars mod installer."
+        rollback()
       }
     }
   }
 }
 
-Write-Output "`r`nThis is v1.6.0-dev of the ksp2mars modpack script for windows.`r`n`r`n"
+# Rollback function
+function rollback(){
+  Set-Location $k
+  Remove-Item -Recurse -Force GameData
+  new-item -itemtype directory GameData > $null
+  Move-Item -Recurse Squad_bak GameData/Squad
+  exit
+}
+
+
+Write-Output "`r`nThis is v1.6.1-dev of the ksp2mars modpack script for windows.`r`n`r`n"
 
 $startingPath = $PWD
 
@@ -72,7 +83,7 @@ if (Test-Path $k/GameData/Squad) {
   Move-Item GameData/Squad Squad_bak
   Remove-Item -Recurse -Force GameData
   new-item -itemtype directory GameData > $null
-  Move-Item Squad_bak GameData/Squad
+  Copy-Item -Recurse Squad_bak GameData/Squad
 }else{
   Write-Output "The specified path does not seem to contain a valid install of KSP."
   exit
@@ -448,7 +459,7 @@ Remove-Item -Recurse -Force NoseconeCockpit
 Set-Location ../..
 }
 
-
+Remove-Item -Recurse -Force $k/Squad_bak
 Set-Location $startingPath
 
 Write-Output "`r`n`r`nFinished!"
