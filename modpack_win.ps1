@@ -201,7 +201,7 @@ if ($b -or $f){
     @("http://beta.kerbalstuff.com/mod/124/Chatterer/download/0.9.5", "Chatterer.zip"),
     @("http://kerbalstuff.com/mod/190/Camera%20Tools/download/v1.3", "CameraTools.zip"),
     @("http://kerbalstuff.com/mod/381/Collision%20FX/download/3.2", "CollisionFX.zip"),
-    @("http://kerbalstuff.com/mod/817/EngineLighting/download/1.3.6", "EngineLighting.zip"),
+    @("http://kerbalstuff.com/mod/817/EngineLighting/download/1.4.0", "EngineLighting.zip"),
     @("http://kerbal.curseforge.com/ksp-mods/220207-hotrockets-particle-fx-replacement/files/2244672/download", "hotrocket.zip"),
     @("http://kerbalstuff.com/mod/743/Improved%20Chase%20Camera/download/v1.5.1", "ImprovedChaseCam.zip"),
     @("http://kerbalstuff.com/mod/224/Rover%20Wheel%20Sounds/download/1.2", "RoverWheelSounds.zip"),
