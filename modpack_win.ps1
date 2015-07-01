@@ -143,7 +143,7 @@ $baseModPack = @(
   @("http://ksptomars.org/public/EngineIgnitor.dll", "EngineIgnitor.dll"),
   @("http://kerbal.curseforge.com/ksp-mods/228561-kerbal-inventory-system-kis/files/2240842/download", "KIS.zip"),
   @("http://kerbal.curseforge.com/ksp-mods/223900-kerbal-attachment-system-kas/files/2240844/download", "KAS.zip"),
-  @("http://github.com/timmersuk/Timmers_KSP/releases/download/0.7.3.2/KeepFit-0.7.3.2.zip", "KeepFit.zip"),
+  @("http://github.com/timmersuk/Timmers_KSP/releases/download/0.7.3.3/KeepFit-0.7.3.3.zip", "KeepFit.zip"),
   @("http://kerbalstuff.com/mod/8/Magic%20Smoke%20Industries%20Infernal%20Robotics/download/0.21.3", "InfernalRobotics.zip"),
   @("http://github.com/ClawKSP/KSP-Stock-Bug-Fix-Modules/releases/download/v1.0.2e.3/StockBugFixModules.v1.0.2e.3.zip", "StockBugFixModules.zip"),
   @("http://github.com/ClawKSP/KSP-Stock-Bug-Fix-Modules/releases/download/v1.0.2e.3/StockPlusController.cfg", "StockPlusController.cfg"),
