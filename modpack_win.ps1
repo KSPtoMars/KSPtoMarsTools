@@ -183,6 +183,7 @@ if (-not $b -and -not $c){
     @("http://kerbalstuff.com/mod/414/StripSymmetry/download/v1.6", "StripSymmetry.zip"),
     @("http://kerbal.curseforge.com/ksp-mods/220530-part-wizard/files/2237849/download", "PartWizard.zip"),
     @("http://kerbalstuff.com/mod/731/Vessel%20Viewer/download/0.71", "VesselViewer.zip"),
+    @("https://github.com/CYBUTEK/KerbalEngineer/releases/download/1.0.17.0/KerbalEngineer-1.0.17.0.zip", "KerbalEngineer.zip"),
     @("http://kerbalstuff.com/mod/776/Take%20Command/download/1.1.4", "TakeCommand.zip")
   )
 
@@ -272,6 +273,7 @@ Copy-Item -force -recurse ksp2m_mods/PartWizard/* GameData
 Copy-Item -force -recurse ksp2m_mods/RCSbuildAid/* GameData
 Copy-Item -force -recurse ksp2m_mods/StripSymmetry/Gamedata/* GameData
 Copy-Item -force -recurse ksp2m_mods/EditorExtensions/* GameData
+Copy-Item -force -recurse ksp2m_mods/KerbalEngineer/* GameData
 }
 
 # Custom move for beauty
