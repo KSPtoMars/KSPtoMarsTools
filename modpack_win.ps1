@@ -344,8 +344,6 @@ Set-Location ../..
 }
 
 # FASA
-# We're not removing FASA parts for now.
-<#
 if (Test-Path -d FASA){
 Set-Location FASA
 Remove-Item -Recurse -Force Agencies, Flags, ICBM, Mercury, Resources
@@ -359,7 +357,6 @@ Set-Location ../Probes
 Remove-Item -Recurse -Force Explorer, Pioneer, Probe_Parachute_Box
 Set-Location ../..
 }
-#>
 
 # Engine Ignitor
 if(Test-Path -d EngineIgnitor){
@@ -373,13 +370,10 @@ Remove-Item -Recurse -Force DMagicOrbitalScience/UniversalStorage
 
 # KW Rocketry
 if(Test-Path -d KWRocketry){
-Set-Location KWRocketry/Parts
-Set-Location Fuel
-Remove-Item -Recurse -Force KW_Universal_Tanks
-Set-Location ../Control
-Remove-Item -Recurse -Force KWRadialSAS 
-Set-Location ../Fairings
-Remove-Item -Recurse -Force UnifiedFairings
+Set-Location KWRocketry/Parts/Fuel/KW_Universal_Tanks
+Remove-Item -Force 1*, 2_*, 2m*, 3*, 5*, KW_C*, KW_F*, P*, R*
+Set-Location ../../Control
+Remove-Item -Recurse -Force KWRadialSAS
 Set-Location ../../..
 }
 
