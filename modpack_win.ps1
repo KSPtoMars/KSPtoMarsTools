@@ -45,7 +45,7 @@ function unzip($file) {
 # Function for downloading files in arrays.
 function download($array) {
   $index = 0
-  $status = True
+  $status = $True
   foreach ($dlfile in $array) {
     $index = $index + 1
     if ($status){$errorcount = 0}
