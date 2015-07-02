@@ -175,7 +175,7 @@ if (-not $b -and -not $c){
     @("http://github.com/malahx/QuickSearch/releases/download/v1.13/QuickSearch-1.13.zip", "QuickSearch.zip"),
     @("http://github.com/snjo/FShangarExtender/releases/download/v3.3/FShangarExtender_3_3.zip", "FShangarExtender.zip"),
     @("http://github.com/Crzyrndm/FilterExtension/releases/download/2.3.0/Filter.Extensions.v2.3.0.1.zip", "Filter.Extensions.zip"),
-	@("http://ksptomars.org/public/HyperEdit-1.4.1_for-KSP-1.0.zip", "HyperEdit.zip"),
+  @("http://ksptomars.org/public/HyperEdit-1.4.1_for-KSP-1.0.zip", "HyperEdit.zip"),
     @("http://github.com/malahx/QuickScroll/releases/download/v1.31/QuickScroll-1.31.zip", "QuickScroll.zip"),
     @("http://github.com/MachXXV/EditorExtensions/releases/download/v2.12/EditorExtensions_v2.12.zip", "EditorExtensions.zip"),
     @("http://github.com/nodrog6/LightsOut/releases/download/v0.1.4/LightsOut-v0.1.4.zip", "LightsOut.zip"),
@@ -316,7 +316,7 @@ Move-Item *.htm licensesAndReadmes
 # Remove old versions of ModuleManager
 Write-Output "`r`nRemoving old ModuleManager Versions"
 if (Test-Path ModuleManager.2.5.1.dll) {
-	Remove-Item ModuleManager.2.5.1.dll
+  Remove-Item ModuleManager.2.5.1.dll
 }
 Remove-Item ModuleManager.2.6.1.dll, ModuleManager.2.6.3.dll, ModuleManager.2.6.5.dll
 
@@ -325,92 +325,92 @@ Write-Output "`r`nRemoving unneeded parts"
 
 # AIES
 if (Test-Path -d AIES_Aerospace){
-	Set-Location AIES_Aerospace
-	Remove-Item -Recurse -Force Aero
-	Set-Location Command
-	Remove-Item -Recurse -Force AIESorbiterpod
-	Set-Location ../FuelTank
-	Remove-Item -Recurse -Force "AIESfueltank 7k", "AIESFueltank superior3", AIESFueltanksul, AIESrcs125ra, "AIEStank MR1", AIEStank1300cl, AIEStankMER1, AIEStankMER6, AIEStankminsond
-	Set-Location ../Structure
-	Remove-Item -Recurse -Force "AIES *", AIESadapterrads, AIESbase*, AIESdec*, "AIESdesacoplador sat1"
-	Set-Location ../..
+  Set-Location AIES_Aerospace
+  Remove-Item -Recurse -Force Aero
+  Set-Location Command
+  Remove-Item -Recurse -Force AIESorbiterpod
+  Set-Location ../FuelTank
+  Remove-Item -Recurse -Force "AIESfueltank 7k", "AIESFueltank superior3", AIESFueltanksul, AIESrcs125ra, "AIEStank MR1", AIEStank1300cl, AIEStankMER1, AIEStankMER6, AIEStankminsond
+  Set-Location ../Structure
+  Remove-Item -Recurse -Force "AIES *", AIESadapterrads, AIESbase*, AIESdec*, "AIESdesacoplador sat1"
+  Set-Location ../..
 }
 
 # HabitatPack
 if (Test-Path -d HabitatPack){
-	Set-Location HabitatPack/Parts
-	Remove-Item -Recurse -Force Basemount, orbitalorb
-	Set-Location ../..
+  Set-Location HabitatPack/Parts
+  Remove-Item -Recurse -Force Basemount, orbitalorb
+  Set-Location ../..
 }
 
 # FASA
 if (Test-Path -d FASA){
-	Set-Location FASA
-	Remove-Item -Recurse -Force Agencies, Flags, ICBM, Mercury, Resources
-	Set-Location Apollo
-	Remove-Item -Recurse -Force ApolloCSM, FASA_Apollo_Fairings, FASA_Apollo_Str, Science
-	Set-Location LEM
-	Remove-Item -Recurse -Force Antennas, AscentStage, DescentStage, DockingCone, InterStage, LandingLegs
-	Set-Location ../../Gemini2
-	Remove-Item -Recurse -Force FASA_ASAS_MiniComp, FASA_Fairings_Plate_2m, FASA_Gemini_BigG, FASA_Gemini_Dec_Dark, FASA_Gemini_Engine_Fuel2, FASA_Gemini_LES, FASA_Gemini_LFT, FASA_Gemini_LFTLong, FASA_Gemini_Lander_Eng, FASA_Gemini_Lander_Legs, FASA_Gemini_Lander_Pod, FASA_Gemini_MOL, FASA_Gemini_NoseCone2, FASA_Gemini_Parachute2, FASA_Gemini_Pod2, FASA_Gemini_RCS_Thruster, FASA_Gemini_SAS_RCS, FASA_WingGemini, SmallGearBay, FASA_Gemini_Centaur
-	Set-Location FASA_Gemini_LR91_Pack
-	Remove-Item -Force *Fairing*, *LFT*
-	Set-Location ../FASA_Agena
-	Remove-Item -Force *Fairing*, *LFT*
-	Set-Location ../../Probes
-	Remove-Item -Recurse -Force Explorer, Pioneer, Probe_Parachute_Box
-	Set-Location ../..
+  Set-Location FASA
+  Remove-Item -Recurse -Force Agencies, Flags, ICBM, Mercury, Resources
+  Set-Location Apollo
+  Remove-Item -Recurse -Force ApolloCSM, FASA_Apollo_Fairings, FASA_Apollo_Str, Science
+  Set-Location LEM
+  Remove-Item -Recurse -Force Antennas, AscentStage, DescentStage, DockingCone, InterStage, LandingLegs
+  Set-Location ../../Gemini2
+  Remove-Item -Recurse -Force FASA_ASAS_MiniComp, FASA_Fairings_Plate_2m, FASA_Gemini_BigG, FASA_Gemini_Dec_Dark, FASA_Gemini_Engine_Fuel2, FASA_Gemini_LES, FASA_Gemini_LFT, FASA_Gemini_LFTLong, FASA_Gemini_Lander_Eng, FASA_Gemini_Lander_Legs, FASA_Gemini_Lander_Pod, FASA_Gemini_MOL, FASA_Gemini_NoseCone2, FASA_Gemini_Parachute2, FASA_Gemini_Pod2, FASA_Gemini_RCS_Thruster, FASA_Gemini_SAS_RCS, FASA_WingGemini, SmallGearBay, FASA_Gemini_Centaur
+  Set-Location FASA_Gemini_LR91_Pack
+  Remove-Item -Force *Fairing*, *LFT*
+  Set-Location ../FASA_Agena
+  Remove-Item -Force *Fairing*, *LFT*
+  Set-Location ../../Probes
+  Remove-Item -Recurse -Force Explorer, Pioneer, Probe_Parachute_Box
+  Set-Location ../..
 }
 
 # Engine Ignitor
 if(Test-Path -d EngineIgnitor){
-	Remove-Item -Recurse -Force EngineIgnitor/Parts
+  Remove-Item -Recurse -Force EngineIgnitor/Parts
 }
 
 # DMagic -> UniversalStorage Parts
 if(Test-Path -d DMagicOrbitalScience){
-	Remove-Item -Recurse -Force DMagicOrbitalScience/UniversalStorage
+  Remove-Item -Recurse -Force DMagicOrbitalScience/UniversalStorage
 }
 
 # KW Rocketry
 if(Test-Path -d KWRocketry){
-	Set-Location KWRocketry/Parts/Fuel/KW_Universal_Tanks
-	Remove-Item -Force 1*, 2_*, 2m*, 3*, 5*, KW_C*, KW_F*, P*, R*, KW_AdapterF*
-	Set-Location ../../Control
-	Remove-Item -Recurse -Force KWRadialSAS
-	Set-Location ../../Structural
-	Remove-Item -Recurse -Force KWFuelAdapter
-	Set-Location ../../..
+  Set-Location KWRocketry/Parts/Fuel/KW_Universal_Tanks
+  Remove-Item -Force 1*, 2_*, 2m*, 3*, 5*, KW_C*, KW_F*, P*, R*, KW_AdapterF*
+  Set-Location ../../Control
+  Remove-Item -Recurse -Force KWRadialSAS
+  Set-Location ../Structural
+  Remove-Item -Recurse -Force KWFuelAdapter
+  Set-Location ../../..
 }
 
 # MechJeb2
 if(Test-Path -d MechJeb2){
-	Remove-Item -Recurse -Force MechJeb2/Parts
+  Remove-Item -Recurse -Force MechJeb2/Parts
 }
 
 # NovaPunch2 
 if(Test-Path -d NovaPunch2){
-	Set-Location NovaPunch2
-	Remove-Item -Recurse -Force Agencies, Flags
-	Set-Location Parts
-	Remove-Item -Recurse -Force ControlPods, Fairings, FuelTanks, NoseCone, SAS, YawmasterCSM, RCS
-	Set-Location CouplersAndAdapters
-	Remove-Item -Recurse -Force NP_interstage*
-	Set-Location ../Freyja
-	Remove-Item -Recurse -Force FreyjaEng, FreyjaRCS, FreyjaTrunk
-	Set-Location ../Odin2
-	Remove-Item -Recurse -Force OdinFairings, OdinPod, OdinRCS, OdinServiceModule
-	Set-Location ../Parachutes
-	Remove-Item -Recurse -Force NP_chute_FuelTankCapParachute
-	Set-Location ../Misc
-	Remove-Item -Recurse -Force NP_Leg_HeavyLeg
-	Set-Location ../Thor
-	Remove-Item -Recurse -Force NP_ThorLanderRCS, NP_ThorLanderRCSTank, NP_ThorAscentPackage, NP_ThorDescentPackage, NP_ThorLanderStrut2, NP_ThorLanderASAS
-	Set-Location ../LaunchEscape
-	Remove-Item -Recurse -Force NP_LES_RCS_nanocone
-	Set-Location ../Odin2
-	Remove-Item -Recurse -Force OdinShield
-	Set-Location ../../..
+  Set-Location NovaPunch2
+  Remove-Item -Recurse -Force Agencies, Flags
+  Set-Location Parts
+  Remove-Item -Recurse -Force ControlPods, Fairings, FuelTanks, NoseCone, SAS, YawmasterCSM, RCS
+  Set-Location CouplersAndAdapters
+  Remove-Item -Recurse -Force NP_interstage*
+  Set-Location ../Freyja
+  Remove-Item -Recurse -Force FreyjaEng, FreyjaRCS, FreyjaTrunk
+  Set-Location ../Odin2
+  Remove-Item -Recurse -Force OdinFairings, OdinPod, OdinRCS, OdinServiceModule
+  Set-Location ../Parachutes
+  Remove-Item -Recurse -Force NP_chute_FuelTankCapParachute
+  Set-Location ../Misc
+  Remove-Item -Recurse -Force NP_Leg_HeavyLeg
+  Set-Location ../Thor
+  Remove-Item -Recurse -Force NP_ThorLanderRCS, NP_ThorLanderRCSTank, NP_ThorAscentPackage, NP_ThorDescentPackage, NP_ThorLanderStrut2, NP_ThorLanderASAS
+  Set-Location ../LaunchEscape
+  Remove-Item -Recurse -Force NP_LES_RCS_nanocone
+  Set-Location ../Odin2
+  Remove-Item -Recurse -Force OdinShield
+  Set-Location ../../..
 }
 
 # Squad
@@ -424,41 +424,41 @@ Set-Location ../../..
 
 # UKS/MKS
 if(Test-Path -d UmbraSpaceIndustries){
-	Set-Location UmbraSpaceIndustries/Kolonization
-	Remove-Item -Recurse -Force Flags
-	Set-Location Parts
-	Remove-Item -force MK3*, MKS_A*, MKS_C*, MKS_D*, MKS_E*, MKS_F*, MKS_K*, MKS_L*, MKS_M*, MKS_P*, MKS_S*, MKS_W*, MKV_Ag*, MKV_B*, MKV_L*, MKV_Pod.cfg, MKV_W*, MiniRover.cfg, OKS_A*, OKS_Col*, OKS_Ha*, OKS_K*, OKS_P*, OKS_S*, OKS_W*, OctoLander.cfg, ScanOMatic.cfg
-	Set-Location ../../Kontainers
-	Remove-Item -force Kontainer*
-	Set-Location Assets
-	Remove-Item -force Kontainer*
-	Set-Location ../../..
+  Set-Location UmbraSpaceIndustries/Kolonization
+  Remove-Item -Recurse -Force Flags
+  Set-Location Parts
+  Remove-Item -force MK3*, MKS_A*, MKS_C*, MKS_D*, MKS_E*, MKS_F*, MKS_K*, MKS_L*, MKS_M*, MKS_P*, MKS_S*, MKS_W*, MKV_Ag*, MKV_B*, MKV_L*, MKV_Pod.cfg, MKV_W*, MiniRover.cfg, OKS_A*, OKS_Col*, OKS_Ha*, OKS_K*, OKS_P*, OKS_S*, OKS_W*, OctoLander.cfg, ScanOMatic.cfg
+  Set-Location ../../Kontainers
+  Remove-Item -force Kontainer*
+  Set-Location Assets
+  Remove-Item -force Kontainer*
+  Set-Location ../../..
 }
 
 # UniversalStorage
 if(Test-Path -d UniversalStorage){
-	Remove-Item -Recurse -Force UniversalStorage/Flags
+  Remove-Item -Recurse -Force UniversalStorage/Flags
 }
 
 # TACLS
 if(Test-Path -d ThunderAerospace){
-	Set-Location ThunderAerospace
-	Remove-Item -Recurse -Force TacLifeSupportContainers, TacLifeSupportHexCans, TacLifeSupportMFT
-	Set-Location ..
+  Set-Location ThunderAerospace
+  Remove-Item -Recurse -Force TacLifeSupportContainers, TacLifeSupportHexCans, TacLifeSupportMFT
+  Set-Location ..
 }
 
 # Taurus HCV
 if(Test-Path -d RSCapsuledyne){
-	Set-Location RSCapsuledyne/Parts
-	Remove-Item -Recurse -Force Engine, FuelTank, OreTank, Nuke
-	Set-Location ../..
+  Set-Location RSCapsuledyne/Parts
+  Remove-Item -Recurse -Force Engine, FuelTank, OreTank, Nuke
+  Set-Location ../..
 }
 
 # Realism Overhaul
 if(Test-Path -d RealismOverhaul){
-	Set-Location RealismOverhaul/Parts
-	Remove-Item -Recurse -Force NoseconeCockpit
-	Set-Location ../..
+  Set-Location RealismOverhaul/Parts
+  Remove-Item -Recurse -Force NoseconeCockpit
+  Set-Location ../..
 }
 
 Remove-Item -Recurse -Force $BackupPath
