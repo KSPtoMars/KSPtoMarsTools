@@ -46,7 +46,7 @@ function unzip($file) {
 $ErrorActionPreference= 'silentlycontinue'
 function download($array) {
   $status = $True
-  for($i=0;$i-le $($array.length-1);$i++){
+  for($i=0;$i -lt $array.length;$i++){
     if ($status){$errorcount = 0}
     Write-Output "[$($i+1) of $($array.length)]: $($array[$i][1])"
 	Invoke-WebRequest -Uri $array[$i][0] -OutFile $array[$i][1] -ErrorVariable +err
