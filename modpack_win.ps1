@@ -43,28 +43,26 @@ function unzip($file) {
 }
 
 # Function for downloading files in arrays.
+$ErrorActionPreference= 'silentlycontinue'
 function download($array) {
-  $index = 0
   $status = $True
-  foreach ($dlfile in $array) {
-    $index = $index + 1
+  for($i=0;$i-le 5;$i++){
     if ($status){$errorcount = 0}
-    Write-Output "[$index of $($array.count)]: $($dlfile[1])"
-    Invoke-WebRequest -Uri $dlfile[0] -OutFile $dlfile[1]
-    if (-not $?) {
+    Write-Output "[$($i+1) of $($array.length)]: $($array[$i][1])"
+	Invoke-WebRequest -Uri $array[$i][0] -OutFile $array[$i][1] -ErrorVariable +err
+	if (-not $?) {
       $status = $?
-      $index = $index - 1
       $errorcount = $errorcount + 1
       if ($errorcount -lt 3){
-        Write-Output "Failed to download $($dlfile[1]). Trying again."
+        Write-Output "Failed to download $($array[$i][1]). Trying again.`r`n"
+	    $i = $i - 1
       }else{
-        Write-Output "Failed to download $($dlfile[1]) three (3) consecutive times. `r`nPlease make sure you have an internet connection and the newest version`r`n of the KSPtoMars mod installer."
-        rollback($BackupPath)
+        Write-Output "Failed to download $($array[$i][1]) three (3) consecutive times. `r`n`r`nPlease make sure you have an internet connection and the newest version`r`nof the KSPtoMars mod installer. `r`nThe error message was: `r`n`r`n$($err[$($err.lenght - 1)])"
+		rollback($BackupPath)
       }
     }
   }
 }
-
 # Rollback function
 function rollback($RPATH){
   Set-Location $k
@@ -461,6 +459,7 @@ if(Test-Path -d RealismOverhaul){
   Set-Location ../..
 }
 
+Set-Location ..
 Remove-Item -Recurse -Force $BackupPath
 Set-Location $startingPath
 
