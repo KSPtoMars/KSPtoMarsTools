@@ -111,14 +111,13 @@ Write-Output "`r`nDownloading all mods. This will take a while."
 
 $baseModPack = @(
   @("http://kerbalstuff.com/mod/361/NEBULA%20Decals/download/1.01", "NebulaDecals.zip"),                                                                    #KSP v0.25
-  @("http://kerbalstuff.com/mod/84/Engine%20Ignitor/download/3.4.1.1", "EngineIgnitor.zip"),                                                                #KSP v0.90
   @("http://github.com/NathanKell/CrossFeedEnabler/releases/download/v3.3/CrossFeedEnabler_v3.3.zip", "CrossFeedEnabler.zip"),                              #KSP v1.0
   @("http://github.com/Starwaster/DeadlyReentry/releases/download/v7.1.0/DeadlyReentry_7.1.0_The_Melificent_Edition.zip", "DeadlyReentry.zip"),             #KSP v1.0
-  @("http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.2/CRP_0.4.2.zip", "CRP.zip"),                                                  #KSP v1.0.2
+  @("http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip"),                                                  #KSP v1.0.4
   @("http://github.com/codepoetpbowden/ConnectedLivingSpace/releases/download/1.1.3.1/Connected_Living_Space-1.1.3.1.zip", "Connected_Living_Space.zip"),   #KSP v1.0.2
   @("http://beta.kerbalstuff.com/mod/67/KW%20Rocketry/download/2.7", "KWRocketry.zip"),                                                                     #KSP v1.0.2
   @("http://kerbalstuff.com/mod/26/NovaPunch/download/2.09", "NovaPunch2.zip"),                                                                             #KSP v1.0.2
-  @("http://github.com/Mihara/RasterPropMonitor/releases/download/v0.20.0/RasterPropMonitor.0.20.0.zip", "RasterPropMonitor.zip"),                          #KSP v1.0.2
+  @("http://github.com/Mihara/RasterPropMonitor/releases/download/v0.21.0/RasterPropMonitor.0.21.0.zip", "RasterPropMonitor.zip"),                          #KSP v1.0.4
   @("http://kerbalstuff.com/mod/71/RealChute%20Parachute%20Systems/download/1.3.2.3", "RealChute.zip"),                                                     #KSP v1.0.2
   @("http://github.com/Crzyrndm/RW-Saturatable/releases/download/1.10.1/Saturatable.RW.v1.10.1.0.zip", "Saturatable.RW.zip"),                               #KSP v1.0.2
   @("http://github.com/taraniselsu/TacLifeSupport/releases/download/v0.11.1.20/TacLifeSupport_0.11.1.20.zip", "TacLifeSupport.zip"),                        #KSP v1.0.2
@@ -133,7 +132,6 @@ $baseModPack = @(
   @("http://github.com/ferram4/Ferram-Aerospace-Research/releases/download/v0.15_3_1_Garabedian/FAR_0_15_3_1_Garabedian.zip", "FAR.zip"),                   #KSP v1.0.3
   @("http://github.com/ferram4/Kerbal-Joint-Reinforcement/releases/download/v3.1.4/KerbalJointReinforcement_v3.1.4.zip", "KerbalJointReinforcement.zip"),   #KSP v1.0.3
   @("http://github.com/KSP-RO/RSS-Textures/releases/download/v10.0/2048.zip", "2048.zip"),                                                                  #KSP v?.?.?
-  @("http://ksptomars.org/public/EngineIgnitor.dll", "EngineIgnitor.dll"),                                                                                  #KSP v?.?.?
   @("http://github.com/BobPalmer/MKS/releases/download/0.31.4/UKS_0.31.4.zip", "UKS.zip"),                                                                  #KSP v?.?.?
   @("http://ksptomars.org/public/HabitatPack_04.1.zip", "HabitatPack.zip"),                                                                                 #KSP v?.?.?
   @("http://ksptomars.org/public/AIES_Aerospace151.zip", "AIES_Aerospace151.zip"),                                                                          #KSP v?.?.?
@@ -253,7 +251,6 @@ Copy-Item -force -recurse ksp2m_mods/RealFuels/* GameData
 Copy-Item -force -recurse ksp2m_mods/RealSolarSystem/* GameData
 Copy-Item -force -recurse ksp2m_mods/Toolbar/Toolbar-1.7.9/GameData/* GameData
 Copy-Item -force -recurse ksp2m_mods/ksp-avc/* GameData
-Copy-Item -force -recurse ksp2m_mods/EngineIgnitor/* GameData
 Copy-Item -force -recurse "ksp2m_mods/KWRocketry/KW Release Package v2.7 (Open this, don't extract it)/GameData/*" GameData
 Copy-Item -force -recurse ksp2m_mods/UniversalStorage/* GameData
 Copy-Item -force -recurse ksp2m_mods/StockBugFixModules/* GameData
@@ -288,7 +285,6 @@ Copy-Item -force -recurse ksp2m_mods/RoverWheelSounds/* GameData
 Write-Output "`r`nAdapting Configs"
 Copy-Item -recurse -force ksp2m_mods/RealismOverhaul/GameData/* GameData #We do this to make sure that we use the RO/RSS configs and not the configs provided by plugins installed after RO/RSS
 Copy-Item -force ksp2m_mods/RealismOverhaul/GameData/RealismOverhaul/RemoteTech_Settings.cfg GameData/RemoteTech/RemoteTech_Settings.cfg
-Copy-Item -force ksp2m_mods/EngineIgnitor.dll GameData/EngineIgnitor/Plugins/EngineIgnitor.dll
 Copy-Item -force ksp2m_mods/TextureReplacer/Extras/MM_ReflectionPluginWrapper.cfg GameData
 Copy-Item -force ksp2m_mods/StockPlusController.cfg GameData
 Copy-Item -force ksp2m_mods/AIES_Node_Patch.cfg/AIES_Node_Patch.cfg GameData
@@ -358,11 +354,6 @@ if (Test-Path -d FASA){
   Set-Location ../../Probes
   Remove-Item -Recurse -Force Explorer, Pioneer, Probe_Parachute_Box
   Set-Location ../..
-}
-
-# Engine Ignitor
-if(Test-Path -d EngineIgnitor){
-  Remove-Item -Recurse -Force EngineIgnitor/Parts
 }
 
 # DMagic -> UniversalStorage Parts
