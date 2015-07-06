@@ -150,7 +150,7 @@ $baseModPack = @(
   @("http://github.com/RemoteTechnologiesGroup/RemoteTech/releases/download/1.6.7/RemoteTech-1.6.7.zip", "RemoteTech.zip"),                                 #KSP v1.0.4
   @("http://github.com/ducakar/TextureReplacer/releases/download/v2.4.7/TextureReplacer-2.4.7.zip", "TextureReplacer.zip"),                                 #KSP v1.0.4
   @("http://kerbal.curseforge.com/ksp-mods/220213-taurus-hcv-3-75-m-csm-system/files/2244776/download", "Taurus.zip"),                                      #KSP v1.0.4
-  @("http://github.com/DMagic1/Orbital-Science/releases/download/v1.0.6/DMagic_Orbital_Science-1.0.6.zip", "DMagic_Orbital_Science.zip"),                   #KSP v1.0.4
+  @("http://github.com/DMagic1/Orbital-Science/releases/download/v1.0.7/DMagic_Orbital_Science-1.0.7.zip", "DMagic_Orbital_Science.zip"),                   #KSP v1.0.4
   @("http://github.com/timmersuk/Timmers_KSP/releases/download/0.7.3.3/KeepFit-0.7.3.3.zip", "KeepFit.zip"),                                                #KSP v1.0.4
   @("http://kerbalstuff.com/mod/8/Magic%20Smoke%20Industries%20Infernal%20Robotics/download/0.21.3", "InfernalRobotics.zip"),                               #KSP v1.0.4
   @("http://github.com/ClawKSP/KSP-Stock-Bug-Fix-Modules/releases/download/v1.0.4a.1/StockBugFixModules.v1.0.4a.1.zip", "StockBugFixModules.zip"),          #KSP v1.0.4
