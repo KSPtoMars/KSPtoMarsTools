@@ -113,11 +113,9 @@ $baseModPack = @(
   @("http://kerbalstuff.com/mod/361/NEBULA%20Decals/download/1.01", "NebulaDecals.zip"),                                                                    #KSP v0.25
   @("http://github.com/NathanKell/CrossFeedEnabler/releases/download/v3.3/CrossFeedEnabler_v3.3.zip", "CrossFeedEnabler.zip"),                              #KSP v1.0
   @("http://github.com/Starwaster/DeadlyReentry/releases/download/v7.1.0/DeadlyReentry_7.1.0_The_Melificent_Edition.zip", "DeadlyReentry.zip"),             #KSP v1.0
-  @("http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip"),                                                  #KSP v1.0.4
   @("http://github.com/codepoetpbowden/ConnectedLivingSpace/releases/download/1.1.3.1/Connected_Living_Space-1.1.3.1.zip", "Connected_Living_Space.zip"),   #KSP v1.0.2
   @("http://beta.kerbalstuff.com/mod/67/KW%20Rocketry/download/2.7", "KWRocketry.zip"),                                                                     #KSP v1.0.2
   @("http://kerbalstuff.com/mod/26/NovaPunch/download/2.09", "NovaPunch2.zip"),                                                                             #KSP v1.0.2
-  @("http://github.com/Mihara/RasterPropMonitor/releases/download/v0.21.0/RasterPropMonitor.0.21.0.zip", "RasterPropMonitor.zip"),                          #KSP v1.0.4
   @("http://kerbalstuff.com/mod/71/RealChute%20Parachute%20Systems/download/1.3.2.3", "RealChute.zip"),                                                     #KSP v1.0.2
   @("http://github.com/Crzyrndm/RW-Saturatable/releases/download/1.10.1/Saturatable.RW.v1.10.1.0.zip", "Saturatable.RW.zip"),                               #KSP v1.0.2
   @("http://github.com/taraniselsu/TacLifeSupport/releases/download/v0.11.1.20/TacLifeSupport_0.11.1.20.zip", "TacLifeSupport.zip"),                        #KSP v1.0.2
@@ -137,6 +135,8 @@ $baseModPack = @(
   @("http://ksptomars.org/public/AIES_Aerospace151.zip", "AIES_Aerospace151.zip"),                                                                          #KSP v?.?.?
   @("http://dl.dropboxusercontent.com/u/72893034/AIES_Patches/AIES_Node_Patch.cfg.zip", "AIES_Node_Patch.cfg.zip"),                                         #KSP v?.?.?
   @("http://ksptomars.org/public/KSPtoMars.zip", "KSPtoMars.zip"),                                                                                          #KSP v?.?.?
+  @("http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip"),                                                  #KSP v1.0.4
+  @("http://github.com/Mihara/RasterPropMonitor/releases/download/v0.21.0/RasterPropMonitor.0.21.0.zip", "RasterPropMonitor.zip"),                          #KSP v1.0.4
   @("http://github.com/camlost2/AJE/releases/download/2.2.1/Advanced_Jet_Engine-2.2.1.zip", "Advanced_Jet_Engine.zip"),                                     #KSP v1.0.4
   @("http://kerbalstuff.com/mod/27/FASA/download/5.35", "FASA.zip"),                                                                                        #KSP v1.0.4
   @("http://kerbal.curseforge.com/ksp-mods/220462-ksp-avc-add-on-version-checker/files/2216818/download", "ksp-avc.zip"),                                   #KSP v1.0.4
