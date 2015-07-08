@@ -76,6 +76,7 @@ function rollback($RPATH){
 Write-Output "`r`nThis is v1.7.0-dev of the ksp2mars modpack script for windows.`r`n`r`n"
 
 $startingPath = $PWD
+$gameDataPath = "$k/GameData"
 
 if (Test-Path $k/GameData/Squad) {
   Set-Location $k
@@ -194,7 +195,6 @@ if ($b -or $f){
   $beautyModPack = @(
     @("http://kerbal.curseforge.com/ksp-mods/224876-planetshine/files/2237465/download", "PlanetShine.zip"),                                                #KSP v1.0
     @("http://kerbalstuff.com/mod/224/Rover%20Wheel%20Sounds/download/1.2", "RoverWheelSounds.zip"),                                                        #KSP v1.0
-    @("https://ksp.sarbian.com/jenkins/job/SmokeScreen/41/artifact/SmokeScreen-2.6.4.0.zip", "SmokeScreen.zip"),                                            #KSP v1.0
     @("http://kerbalstuff.com/mod/190/Camera%20Tools/download/v1.3", "CameraTools.zip"),                                                                    #KSP v1.0.2
     @("http://kerbalstuff.com/mod/381/Collision%20FX/download/3.2", "CollisionFX.zip"),                                                                     #KSP v1.0.2
     @("http://kerbalstuff.com/mod/700/Scatterer/download/0.151", "Scatterer.zip"),                                                                          #KSP v1.0.2
@@ -205,6 +205,7 @@ if ($b -or $f){
     @("http://kerbal.curseforge.com/ksp-mods/220207-hotrockets-particle-fx-replacement/files/2244672/download", "hotrocket.zip"),                           #KSP v1.0.4
     @("http://kerbalstuff.com/mod/743/Improved%20Chase%20Camera/download/v1.5.1", "ImprovedChaseCam.zip"),                                                  #KSP v1.0.4
     @("http://github.com/richardbunt/Telemachus/releases/download/v1.4.30.0/Telemachus_1_4_30_0.zip", "Telemachus.zip"),                                    #KSP v1.0.4 
+    @("https://ksp.sarbian.com/jenkins/job/SmokeScreen/44/artifact/SmokeScreen-2.6.6.0.zip", "SmokeScreen.zip"),                                            #KSP v1.0.x
     @("http://github.com/HappyFaceIndustries/BetterTimeWarp/releases/download/2.0/BetterTimeWarp_2.0.zip", "BetterTimeWarp.zip")                            #KSP v1.0.x
   )
 
@@ -292,7 +293,7 @@ Copy-Item -force ksp2m_mods/AIES_Node_Patch.cfg/AIES_Node_Patch.cfg GameData
 # Clean up
 Write-Output "`r`nStarting Clean up"
 Remove-Item -Recurse -Force ksp2m_mods
-Set-Location GameData
+Set-Location $gameDataPath
 new-item -itemtype directory licensesAndReadmes > $null
 if (Test-Path *.txt){
 Move-Item *.txt licensesAndReadmes
@@ -318,136 +319,131 @@ Remove-Item ModuleManager.2.6.1.dll, ModuleManager.2.6.3.dll, ModuleManager.2.6.
 Write-Output "`r`nRemoving unneeded parts"
 
 # AIES
-if (Test-Path -d AIES_Aerospace){
-  Set-Location AIES_Aerospace
+if (Test-Path -d $gameDataPath/AIES_Aerospace){
+  Set-Location $gameDataPath/AIES_Aerospace
   Remove-Item -Recurse -Force Aero
-  Set-Location Command
+  Set-Location $gameDataPath/AIES_Aerospace/Command
   Remove-Item -Recurse -Force AIESorbiterpod
-  Set-Location ../FuelTank
+  Set-Location $gameDataPath/AIES_Aerospace/FuelTank
   Remove-Item -Recurse -Force "AIESfueltank 7k", "AIESFueltank superior3", AIESFueltanksul, AIESrcs125ra, "AIEStank MR1", AIEStank1300cl, AIEStankMER1, AIEStankMER6, AIEStankminsond
-  Set-Location ../Structure
+  Set-Location $gameDataPath/AIES_Aerospace/Structure
   Remove-Item -Recurse -Force "AIES *", AIESadapterrads, AIESbase*, AIESdec*, "AIESdesacoplador sat1"
-  Set-Location ../..
+  Set-Location $gameDataPath
 }
 
 # HabitatPack
-if (Test-Path -d HabitatPack){
-  Set-Location HabitatPack/Parts
+if (Test-Path -d $gameDataPath/HabitatPack){
+  Set-Location $gameDataPath/HabitatPack/Parts
   Remove-Item -Recurse -Force Basemount, orbitalorb
-  Set-Location ../..
+  Set-Location $gameDataPath
 }
 
 # FASA
-if (Test-Path -d FASA){
-  Set-Location FASA
+if (Test-Path -d $gameDataPath/FASA){
+  Set-Location $gameDataPath/FASA
   Remove-Item -Recurse -Force Agencies, Flags, ICBM, Mercury, Resources
-  Set-Location Apollo
+  Set-Location $gameDataPath/FASA/Apollo
   Remove-Item -Recurse -Force ApolloCSM, FASA_Apollo_Fairings, FASA_Apollo_Str, Science
-  Set-Location LEM
+  Set-Location $gameDataPath/FASA/Apollo/LEM
   Remove-Item -Recurse -Force Antennas, AscentStage, DescentStage, DockingCone, InterStage, LandingLegs
-  Set-Location ../../Gemini2
+  Set-Location $gameDataPath/FASA/Gemini2
   Remove-Item -Recurse -Force FASA_ASAS_MiniComp, FASA_Fairings_Plate_2m, FASA_Gemini_BigG, FASA_Gemini_Dec_Dark, FASA_Gemini_Engine_Fuel2, FASA_Gemini_LES, FASA_Gemini_LFT, FASA_Gemini_LFTLong, FASA_Gemini_Lander_Eng, FASA_Gemini_Lander_Legs, FASA_Gemini_Lander_Pod, FASA_Gemini_MOL, FASA_Gemini_NoseCone2, FASA_Gemini_Parachute2, FASA_Gemini_Pod2, FASA_Gemini_RCS_Thruster, FASA_Gemini_SAS_RCS, FASA_WingGemini, SmallGearBay, FASA_Gemini_Centaur
-  Set-Location FASA_Gemini_LR91_Pack
+  Set-Location $gameDataPath/FASA/Gemini2/FASA_Gemini_LR91_Pack
   Remove-Item -Force *Fairing*, *LFT*
-  Set-Location ../FASA_Agena
+  Set-Location $gameDataPath/FASA/Gemini2/FASA_Agena
   Remove-Item -Force *Fairing*, *LFT*
-  Set-Location ../../Probes
+  Set-Location $gameDataPath/FASA/Probes
   Remove-Item -Recurse -Force Explorer, Pioneer, Probe_Parachute_Box
-  Set-Location ../..
+  Set-Location $gameDataPath
 }
 
 # DMagic -> UniversalStorage Parts
-if(Test-Path -d DMagicOrbitalScience){
-  Remove-Item -Recurse -Force DMagicOrbitalScience/UniversalStorage
+if(Test-Path -d $gameDataPath/DMagicOrbitalScience){
+  Remove-Item -Recurse -Force $gameDataPath/DMagicOrbitalScience/UniversalStorage
+  Set-Location $gameDataPath
 }
 
 # KW Rocketry
-if(Test-Path -d KWRocketry){
-  Set-Location KWRocketry/Parts/Fuel/KW_Universal_Tanks
+if(Test-Path -d $gameDataPath/KWRocketry){
+  Set-Location $gameDataPath/KWRocketry/Parts/Fuel/KW_Universal_Tanks
   Remove-Item -Force 1*, 2_*, 2m*, 3*, 5*, KW_C*, KW_F*, P*, R*, KW_AdapterF*
-  Set-Location ../../Control
-  Remove-Item -Recurse -Force KWRadialSAS
-  Set-Location ../Structural
-  Remove-Item -Recurse -Force KWFuelAdapter
-  Set-Location ../../..
+  Remove-Item -Recurse -Force $gameDataPath/KWRocketry/Parts/Control/KWRadialSAS
+  Remove-Item -Recurse -Force $gameDataPath/KWRocketry/Parts/Structural/KWFuelAdapter
+  Set-Location $gameDataPath
 }
 
 # MechJeb2
-if(Test-Path -d MechJeb2){
-  Remove-Item -Recurse -Force MechJeb2/Parts
+if(Test-Path -d $gameDataPath/MechJeb2){
+  Remove-Item -Recurse -Force $gameDataPath/MechJeb2/Parts
+  Set-Location $gameDataPath
 }
 
 # NovaPunch2 
-if(Test-Path -d NovaPunch2){
-  Set-Location NovaPunch2
+if(Test-Path -d $gameDataPath/NovaPunch2){
+  Set-Location $gameDataPath/NovaPunch2
   Remove-Item -Recurse -Force Agencies, Flags
-  Set-Location Parts
+  Set-Location $gameDataPath/NovaPunch2/Parts
   Remove-Item -Recurse -Force ControlPods, Fairings, FuelTanks, NoseCone, SAS, YawmasterCSM, RCS
-  Set-Location CouplersAndAdapters
+  Set-Location $gameDataPath/NovaPunch2/Parts/CouplersAndAdapters
   Remove-Item -Recurse -Force NP_interstage*
-  Set-Location ../Freyja
+  Set-Location $gameDataPath/NovaPunch2/Parts/Freyja
   Remove-Item -Recurse -Force FreyjaEng, FreyjaRCS, FreyjaTrunk
-  Set-Location ../Odin2
+  Set-Location $gameDataPath/NovaPunch2/Parts/Odin2
   Remove-Item -Recurse -Force OdinFairings, OdinPod, OdinRCS, OdinServiceModule
-  Set-Location ../Parachutes
-  Remove-Item -Recurse -Force NP_chute_FuelTankCapParachute
-  Set-Location ../Misc
-  Remove-Item -Recurse -Force NP_Leg_HeavyLeg
-  Set-Location ../Thor
+  Set-Location $gameDataPath/NovaPunch2/Parts/Thor
   Remove-Item -Recurse -Force NP_ThorLanderRCS, NP_ThorLanderRCSTank, NP_ThorAscentPackage, NP_ThorDescentPackage, NP_ThorLanderStrut2, NP_ThorLanderASAS
-  Set-Location ../LaunchEscape
-  Remove-Item -Recurse -Force NP_LES_RCS_nanocone
-  Set-Location ../Odin2
-  Remove-Item -Recurse -Force OdinShield
-  Set-Location ../../..
+  Remove-Item -Recurse -Force $gameDataPath/NovaPunch2/Parts/Parachutes/NP_chute_FuelTankCapParachute
+  Remove-Item -Recurse -Force $gameDataPath/NovaPunch2/Parts/Misc/NP_Leg_HeavyLeg
+  Remove-Item -Recurse -Force $gameDataPath/NovaPunch2/Parts/LaunchEscape/NP_LES_RCS_nanocone
+  Remove-Item -Recurse -Force $gameDataPath/NovaPunch2/Parts/Odin2/OdinShield
+  Set-Location $gameDataPath
 }
 
 # Squad
-Set-Location Squad
+Set-Location $gameDataPath/Squad
 Remove-Item -Recurse -Force Agencies, Flags 2> $null
-Set-Location Parts/Aero
+Set-Location $gameDataPath/Squad/Parts/Aero
 Remove-Item -Recurse -Force fairings 2> $null
-Set-Location ../FuelTank
+Set-Location $gameDataPath/Squad/Parts/FuelTank
 Remove-Item -Recurse -Force RCSFuel*, Size3*, adapter*, fuelTankJ*, fuelTankO*, fuelTankT100, fuelTankT200, fuelTankT400, fuelTankT800, fuelTankX*, mk2*, mk3*, xenon* 2> $null
-Set-Location ../../..
+Set-Location $gameDataPath
 
 # UKS/MKS
-if(Test-Path -d UmbraSpaceIndustries){
-  Set-Location UmbraSpaceIndustries/Kolonization
-  Remove-Item -Recurse -Force Flags
-  Set-Location Parts
+if(Test-Path -d $gameDataPath/UmbraSpaceIndustries){
+  Remove-Item -Recurse -Force $gameDataPath/UmbraSpaceIndustries/Kolonization/Flags
+  Set-Location $gameDataPath/UmbraSpaceIndustries/Kolonization/Parts
   Remove-Item -force MK3*, MKS_A*, MKS_C*, MKS_D*, MKS_E*, MKS_F*, MKS_K*, MKS_L*, MKS_M*, MKS_P*, MKS_S*, MKS_W*, MKV_Ag*, MKV_B*, MKV_L*, MKV_Pod.cfg, MKV_W*, MiniRover.cfg, OKS_A*, OKS_Col*, OKS_Ha*, OKS_K*, OKS_P*, OKS_S*, OKS_W*, OctoLander.cfg, ScanOMatic.cfg
-  Set-Location ../../Kontainers
+  Set-Location $gameDataPath/UmbraSpaceIndustries/Kontainers
   Remove-Item -force Kontainer*
-  Set-Location Assets
+  Set-Location $gameDataPath/UmbraSpaceIndustries/Kontainers/Assets
   Remove-Item -force Kontainer*
-  Set-Location ../../..
+  Set-Location $gameDataPath
 }
 
 # UniversalStorage
-if(Test-Path -d UniversalStorage){
+if(Test-Path -d $gameDataPath/UniversalStorage){
   Remove-Item -Recurse -Force UniversalStorage/Flags
+  Set-Location $gameDataPath
 }
 
 # TACLS
-if(Test-Path -d ThunderAerospace){
-  Set-Location ThunderAerospace
+if(Test-Path -d $gameDataPath/ThunderAerospace){
+  Set-Location $gameDataPath/ThunderAerospace
   Remove-Item -Recurse -Force TacLifeSupportContainers, TacLifeSupportHexCans, TacLifeSupportMFT
-  Set-Location ..
+  Set-Location $gameDataPath
 }
 
 # Taurus HCV
-if(Test-Path -d RSCapsuledyne){
-  Set-Location RSCapsuledyne/Parts
+if(Test-Path -d $gameDataPath/RSCapsuledyne){
+  Set-Location $gameDataPath/RSCapsuledyne/Parts
   Remove-Item -Recurse -Force Engine, FuelTank, OreTank, Nuke
-  Set-Location ../..
+  Set-Location $gameDataPath
 }
 
 # Realism Overhaul
-if(Test-Path -d RealismOverhaul){
-  Set-Location RealismOverhaul/Parts
-  Remove-Item -Recurse -Force NoseconeCockpit
-  Set-Location ../..
+if(Test-Path -d $gameDataPath/RealismOverhaul){
+  Remove-Item -Recurse -Force $gameDataPath/RealismOverhaul/Parts/NoseconeCockpit
+  Set-Location $gameDataPath
 }
 
 Set-Location ..
