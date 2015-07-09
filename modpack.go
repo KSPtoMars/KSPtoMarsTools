@@ -11,7 +11,7 @@ func download(A [][]string) {
     uri := A[i][0]
     file := A[i][1]
     fmt.Println("[", i+1, " of ", cap(A), "]: ", file)
-    out, err := os.Create(file)
+    out, _ := os.Create(file)
     defer out.Close()
     resp, _ := http.Get(uri)
     defer resp.Body.Close()
@@ -88,7 +88,7 @@ var basemods = TwoDText{
     []string{"https://github.com/CYBUTEK/KerbalEngineer/releases/download/1.0.17.0/KerbalEngineer-1.0.17.0.zip", "KerbalEngineer.zip"},                            //KSP v1.0.4
     []string{"http://kerbalstuff.com/mod/776/Take%20Command/download/1.1.4", "TakeCommand.zip"},                                                                   //KSP v1.0.4
     []string{"http://github.com/malahx/QuickSearch/releases/download/v1.13/QuickSearch-1.13.zip", "QuickSearch.zip"},                                              //KSP v1.0.x
-    []string{"http://github.com/malahx/QuickScroll/releases/download/v1.31/QuickScroll-1.31.zip", "QuickScroll.zip")                                               //KSP v1.0.x
+    []string{"http://github.com/malahx/QuickScroll/releases/download/v1.31/QuickScroll-1.31.zip", "QuickScroll.zip"},                                              //KSP v1.0.x
   }
 
   var beautymods = TwoDText{
