@@ -162,6 +162,7 @@ $baseModPack = @(
   @("http://kerbalstuff.com/mod/255/TweakableEverything/download/1.12", "TweakableEverything.zip"),                                                         #KSP v1.0.4
   @("http://github.com/Swamp-Ig/ProceduralParts/releases/download/v1.1.6/ProceduralParts-1.1.6.zip", "ProceduralParts.zip"),                                #KSP v1.0.4
   @("https://ksp.sarbian.com/jenkins/job/ModularFlightIntegrator/9/artifact/ModularFlightIntegrator-1.1.1.0.zip", "ModularFlightIntegrator.zip"),           #KSP v1.0.4
+  @("http://github.com/KSP-RO/RealHeat/releases/download/v1.0/RealHeat_v1.0.zip", "RealHeat.zip"),                                                          #KSP v1.0.4
   @("http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip")                                                   #KSP v1.0.4
 )
 
@@ -242,6 +243,7 @@ Remove-Item -force -recurse $ksp2mModsPath/FAR/GameData/ModularFlightIntegrator
 Remove-Item -force -recurse $ksp2mModsPath/FASA/GameData/JSI
 Remove-Item -force -recurse $ksp2mModsPath/RealFuels/CommunityResourcePack
 Remove-Item -force -recurse $ksp2mModsPath/RealFuels/SolverEngines
+Remove-Item -force -recurse $ksp2mModsPath/RealHeat/ModularFlightIntegrator
 Remove-Item -force -recurse $ksp2mModsPath/UniversalStorage/CommunityResourcePack
 
 # Move all the mods to GameData folder
@@ -255,6 +257,7 @@ foreach-Object {
 Copy-Item -force -recurse $ksp2mModsPath/CrossFeedEnabler/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/DeadlyReentry/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/RealFuels/* $gameDataPath
+Copy-Item -force -recurse $ksp2mModsPath/RealHeat/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/RealSolarSystem/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/Toolbar/Toolbar-1.7.9/GameData/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/ksp-avc/* $gameDataPath
