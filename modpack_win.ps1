@@ -1,5 +1,5 @@
 #
-# KSPtoMars Windows Modpack v1.7.1-dev
+# KSPtoMars Windows Modpack v1.7.2-dev
 # Written by Sven Frenzel (sven@frenzel.dk) with some contributions by Darko Pilav (darko.pilav@gmail.com)
 #
 # The MIT License (MIT)
@@ -77,7 +77,7 @@ function rollback($RPATH){
 }
 
 
-Write-Output "`r`nThis is v1.7.1-dev of the ksp2mars modpack script for windows.`r`n`r`n"
+Write-Output "`r`nThis is v1.7.2-dev of the ksp2mars modpack script for windows.`r`n`r`n"
 
 if (Test-Path $gameDataPath/Squad) {
   Set-Location $k
