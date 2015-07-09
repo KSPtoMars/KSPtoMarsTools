@@ -174,11 +174,11 @@ if (-not $b -and -not $c){
     @("http://github.com/snjo/FShangarExtender/releases/download/v3.3/FShangarExtender_3_3.zip", "FShangarExtender.zip"),                                   #KSP v1.0
     @("http://kerbalstuff.com/mod/414/StripSymmetry/download/v1.6", "StripSymmetry.zip"),                                                                   #KSP v1.0
     @("http://kerbal.curseforge.com/ksp-mods/220602-rcs-build-aid/files/2243090/download", "RCSbuildAid.zip"),                                              #KSP v1.0.2
-    @("http://kerbal.curseforge.com/ksp-mods/220530-part-wizard/files/2237849/download", "PartWizard.zip"),                                                 #KSP v1.0.2
     @("http://kerbalstuff.com/mod/731/Vessel%20Viewer/download/0.71", "VesselViewer.zip"),                                                                  #KSP v1.0.2
     @("http://github.com/Crzyrndm/FilterExtension/releases/download/2.3.0/Filter.Extensions.v2.3.0.1.zip", "Filter.Extensions.zip"),                        #KSP v1.0.3
     @("http://github.com/MachXXV/EditorExtensions/releases/download/v2.12/EditorExtensions_v2.12.zip", "EditorExtensions.zip"),                             #KSP v1.0.3
     @("http://ksptomars.org/public/HyperEdit-1.4.1_for-KSP-1.0.zip", "HyperEdit.zip"),                                                                      #KSP v?.?.?
+    @("http://kerbal.curseforge.com/ksp-mods/220530-part-wizard/files/2246104/download", "PartWizard.zip"),                                                 #KSP v1.0.4
     @("http://kerbal.curseforge.com/ksp-mods/220221-mechjeb/files/2245658/download", "mechjeb2.zip"),                                                       #KSP v1.0.4
     @("http://github.com/nodrog6/LightsOut/releases/download/v0.1.4/LightsOut-v0.1.4.zip", "LightsOut.zip"),                                                #KSP v1.0.4
     @("https://github.com/CYBUTEK/KerbalEngineer/releases/download/1.0.17.0/KerbalEngineer-1.0.17.0.zip", "KerbalEngineer.zip"),                            #KSP v1.0.4
@@ -202,7 +202,7 @@ if ($b -or $f){
     @("http://kerbalstuff.com/mod/381/Collision%20FX/download/3.2", "CollisionFX.zip"),                                                                     #KSP v1.0.2
     @("http://kerbalstuff.com/mod/700/Scatterer/download/0.151", "Scatterer.zip"),                                                                          #KSP v1.0.2
     @("http://github.com/KSP-RO/RSS-Textures/releases/download/v10.0/8192.zip", "8192.zip"),                                                                #KSP v?.?.?
-    @("http://github.com/MOARdV/DistantObject/releases/download/v1.5.6/DistantObject_1.5.6.zip", "DistantObject.zip"),                                      #KSP v1.0.4
+    @("http://github.com/MOARdV/DistantObject/releases/download/v1.5.7/DistantObject_1.5.7.zip", "DistantObject.zip"),                                      #KSP v1.0.4
     @("http://beta.kerbalstuff.com/mod/124/Chatterer/download/0.9.5", "Chatterer.zip"),                                                                     #KSP v1.0.4
     @("http://kerbalstuff.com/mod/817/EngineLighting/download/1.4.0", "EngineLighting.zip"),                                                                #KSP v1.0.4
     @("http://kerbal.curseforge.com/ksp-mods/220207-hotrockets-particle-fx-replacement/files/2244672/download", "hotrocket.zip"),                           #KSP v1.0.4
