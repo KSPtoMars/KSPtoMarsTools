@@ -347,6 +347,14 @@ if (Test-Path -d $gameDataPath/HabitatPack){
   Set-Location $gameDataPath
 }
 
+# Deadly Reentry
+if (Test-Path -d $gameDataPath/DeadlyReentry){
+  Remove-Item -Recurse -Force $gameDataPath/DeadlyReentry/Plugins
+  Remove-Item -Recurse -Force $gameDataPath/DeadlyReentry/Sounds
+  Remove-Item -Force "$gameDataPath/DeadlyReentry/*.cfg"
+  Set-Location $gameDataPath
+}
+
 # FASA
 if (Test-Path -d $gameDataPath/FASA){
   Set-Location $gameDataPath/FASA
