@@ -1,10 +1,62 @@
 package main
 import (
-"fmt"
-"net/http"
-"io"
-"os"
+  "fmt"
+  "net/http"
+  "io"
+  "os"
+  "flag"
 )
+
+type arguments struct {
+  path string
+  devFlag, coreFlag, beautyFlag, fullFlag bool
+}
+
+func checkArguments() *arguments {
+  flag.Usage = func() {
+    fmt.Printf("Usage: modScript -path=\"<Path to KSP folder>\" [-dev|-core|-beauty|-full]\n\n")
+    flag.PrintDefaults()
+  }
+  
+  inputArguments := new(arguments)
+
+  flag.StringVar(&(inputArguments.path), "path", "gaga", "Path to KSP")
+
+  flag.BoolVar(&(inputArguments.devFlag), "dev", false, "Flag for core and dev mods")
+  flag.BoolVar(&(inputArguments.coreFlag), "core", false, "Flag for core mods")
+  flag.BoolVar(&(inputArguments.beautyFlag), "beauty", false, "Flag for core and beauty mods")
+  flag.BoolVar(&(inputArguments.fullFlag), "full", false, "Flag for all mods")
+
+  flag.Parse()
+  
+  var checkSum int = 0
+  var errorEncountered = false
+  
+  if (inputArguments.devFlag) { checkSum += 1 }
+  if (inputArguments.coreFlag) { checkSum += 1 }
+  if (inputArguments.beautyFlag) { checkSum += 1 }
+  if (inputArguments.fullFlag) { checkSum += 1 }
+
+  if (checkSum == 0) {
+    inputArguments.devFlag = true
+  }
+  if (checkSum > 1) { 
+    fmt.Println("Please select only one installation type flag\n")
+    errorEncountered = true
+  }
+  
+  if _, err := os.Stat(inputArguments.path + "/GameData/Squad"); os.IsNotExist(err) {
+    fmt.Println(inputArguments.path + " doesn't seem to be a valid KSP installation\n")
+    errorEncountered = true
+  }
+
+  if (errorEncountered) {  
+    flag.Usage()
+    return nil
+  }
+  
+  return inputArguments
+}
 
 func download(A [][]string) {
   for i := 0; i < cap(A); i++ {
@@ -74,48 +126,52 @@ var basemods = TwoDText{
   []string{"http://github.com/Swamp-Ig/ProceduralParts/releases/download/v1.1.6/ProceduralParts-1.1.6.zip", "ProceduralParts.zip"},                                //KSP v1.0.4
 }
 
-  var devmods = TwoDText{
-    []string{"http://github.com/snjo/FShangarExtender/releases/download/v3.3/FShangarExtender_3_3.zip", "FShangarExtender.zip"},                                   //KSP v1.0
-    []string{"http://kerbalstuff.com/mod/414/StripSymmetry/download/v1.6", "StripSymmetry.zip"},                                                                   //KSP v1.0
-    []string{"http://kerbal.curseforge.com/ksp-mods/220602-rcs-build-aid/files/2243090/download", "RCSbuildAid.zip"},                                              //KSP v1.0.2
-    []string{"http://kerbalstuff.com/mod/731/Vessel%20Viewer/download/0.71", "VesselViewer.zip"},                                                                  //KSP v1.0.2
-    []string{"http://github.com/Crzyrndm/FilterExtension/releases/download/2.3.0/Filter.Extensions.v2.3.0.1.zip", "Filter.Extensions.zip"},                        //KSP v1.0.3
-    []string{"http://github.com/MachXXV/EditorExtensions/releases/download/v2.12/EditorExtensions_v2.12.zip", "EditorExtensions.zip"},                             //KSP v1.0.3
-    []string{"http://ksptomars.org/public/HyperEdit-1.4.1_for-KSP-1.0.zip", "HyperEdit.zip"},                                                                      //KSP v?.?.?
-    []string{"http://kerbal.curseforge.com/ksp-mods/220530-part-wizard/files/2246104/download", "PartWizard.zip"},                                                 //KSP v1.0.4
-    []string{"http://kerbal.curseforge.com/ksp-mods/220221-mechjeb/files/2245658/download", "mechjeb2.zip"},                                                       //KSP v1.0.4
-    []string{"http://github.com/nodrog6/LightsOut/releases/download/v0.1.4/LightsOut-v0.1.4.zip", "LightsOut.zip"},                                                //KSP v1.0.4
-    []string{"https://github.com/CYBUTEK/KerbalEngineer/releases/download/1.0.17.0/KerbalEngineer-1.0.17.0.zip", "KerbalEngineer.zip"},                            //KSP v1.0.4
-    []string{"http://kerbalstuff.com/mod/776/Take%20Command/download/1.1.4", "TakeCommand.zip"},                                                                   //KSP v1.0.4
-    []string{"http://github.com/malahx/QuickSearch/releases/download/v1.13/QuickSearch-1.13.zip", "QuickSearch.zip"},                                              //KSP v1.0.x
-    []string{"http://github.com/malahx/QuickScroll/releases/download/v1.31/QuickScroll-1.31.zip", "QuickScroll.zip"},                                              //KSP v1.0.x
-  }
+var devmods = TwoDText{
+  []string{"http://github.com/snjo/FShangarExtender/releases/download/v3.3/FShangarExtender_3_3.zip", "FShangarExtender.zip"},                                   //KSP v1.0
+  []string{"http://kerbalstuff.com/mod/414/StripSymmetry/download/v1.6", "StripSymmetry.zip"},                                                                   //KSP v1.0
+  []string{"http://kerbal.curseforge.com/ksp-mods/220602-rcs-build-aid/files/2243090/download", "RCSbuildAid.zip"},                                              //KSP v1.0.2
+  []string{"http://kerbalstuff.com/mod/731/Vessel%20Viewer/download/0.71", "VesselViewer.zip"},                                                                  //KSP v1.0.2
+  []string{"http://github.com/Crzyrndm/FilterExtension/releases/download/2.3.0/Filter.Extensions.v2.3.0.1.zip", "Filter.Extensions.zip"},                        //KSP v1.0.3
+  []string{"http://github.com/MachXXV/EditorExtensions/releases/download/v2.12/EditorExtensions_v2.12.zip", "EditorExtensions.zip"},                             //KSP v1.0.3
+  []string{"http://ksptomars.org/public/HyperEdit-1.4.1_for-KSP-1.0.zip", "HyperEdit.zip"},                                                                      //KSP v?.?.?
+  []string{"http://kerbal.curseforge.com/ksp-mods/220530-part-wizard/files/2246104/download", "PartWizard.zip"},                                                 //KSP v1.0.4
+  []string{"http://kerbal.curseforge.com/ksp-mods/220221-mechjeb/files/2245658/download", "mechjeb2.zip"},                                                       //KSP v1.0.4
+  []string{"http://github.com/nodrog6/LightsOut/releases/download/v0.1.4/LightsOut-v0.1.4.zip", "LightsOut.zip"},                                                //KSP v1.0.4
+  []string{"https://github.com/CYBUTEK/KerbalEngineer/releases/download/1.0.17.0/KerbalEngineer-1.0.17.0.zip", "KerbalEngineer.zip"},                            //KSP v1.0.4
+  []string{"http://kerbalstuff.com/mod/776/Take%20Command/download/1.1.4", "TakeCommand.zip"},                                                                   //KSP v1.0.4
+  []string{"http://github.com/malahx/QuickSearch/releases/download/v1.13/QuickSearch-1.13.zip", "QuickSearch.zip"},                                              //KSP v1.0.x
+  []string{"http://github.com/malahx/QuickScroll/releases/download/v1.31/QuickScroll-1.31.zip", "QuickScroll.zip"},                                              //KSP v1.0.x
+}
 
-  var beautymods = TwoDText{
-    []string{"http://kerbal.curseforge.com/ksp-mods/224876-planetshine/files/2237465/download", "PlanetShine.zip"},                                                //KSP v1.0
-    []string{"http://kerbalstuff.com/mod/224/Rover%20Wheel%20Sounds/download/1.2", "RoverWheelSounds.zip"},                                                        //KSP v1.0
-    []string{"http://kerbalstuff.com/mod/190/Camera%20Tools/download/v1.3", "CameraTools.zip"},                                                                    //KSP v1.0.2
-    []string{"http://kerbalstuff.com/mod/381/Collision%20FX/download/3.2", "CollisionFX.zip"},                                                                     //KSP v1.0.2
-    []string{"http://kerbalstuff.com/mod/700/Scatterer/download/0.151", "Scatterer.zip"},                                                                          //KSP v1.0.2
-    []string{"http://github.com/KSP-RO/RSS-Textures/releases/download/v10.0/8192.zip", "8192.zip"},                                                                //KSP v?.?.?
-    []string{"http://github.com/MOARdV/DistantObject/releases/download/v1.5.7/DistantObject_1.5.7.zip", "DistantObject.zip"},                                      //KSP v1.0.4
-    []string{"http://beta.kerbalstuff.com/mod/124/Chatterer/download/0.9.5", "Chatterer.zip"},                                                                     //KSP v1.0.4
-    []string{"http://kerbalstuff.com/mod/817/EngineLighting/download/1.4.0", "EngineLighting.zip"},                                                                //KSP v1.0.4
-    []string{"http://kerbal.curseforge.com/ksp-mods/220207-hotrockets-particle-fx-replacement/files/2244672/download", "hotrocket.zip"},                           //KSP v1.0.4
-    []string{"http://kerbalstuff.com/mod/743/Improved%20Chase%20Camera/download/v1.5.1", "ImprovedChaseCam.zip"},                                                  //KSP v1.0.4
-    []string{"http://github.com/richardbunt/Telemachus/releases/download/v1.4.30.0/Telemachus_1_4_30_0.zip", "Telemachus.zip"},                                    //KSP v1.0.4 
-    []string{"https://ksp.sarbian.com/jenkins/job/SmokeScreen/44/artifact/SmokeScreen-2.6.6.0.zip", "SmokeScreen.zip"},                                            //KSP v1.0.x
-    []string{"http://github.com/HappyFaceIndustries/BetterTimeWarp/releases/download/2.0/BetterTimeWarp_2.0.zip", "BetterTimeWarp.zip"},                           //KSP v1.0.x
-  }
+var beautymods = TwoDText{
+  []string{"http://kerbal.curseforge.com/ksp-mods/224876-planetshine/files/2237465/download", "PlanetShine.zip"},                                                //KSP v1.0
+  []string{"http://kerbalstuff.com/mod/224/Rover%20Wheel%20Sounds/download/1.2", "RoverWheelSounds.zip"},                                                        //KSP v1.0
+  []string{"http://kerbalstuff.com/mod/190/Camera%20Tools/download/v1.3", "CameraTools.zip"},                                                                    //KSP v1.0.2
+  []string{"http://kerbalstuff.com/mod/381/Collision%20FX/download/3.2", "CollisionFX.zip"},                                                                     //KSP v1.0.2
+  []string{"http://kerbalstuff.com/mod/700/Scatterer/download/0.151", "Scatterer.zip"},                                                                          //KSP v1.0.2
+  []string{"http://github.com/KSP-RO/RSS-Textures/releases/download/v10.0/8192.zip", "8192.zip"},                                                                //KSP v?.?.?
+  []string{"http://github.com/MOARdV/DistantObject/releases/download/v1.5.7/DistantObject_1.5.7.zip", "DistantObject.zip"},                                      //KSP v1.0.4
+  []string{"http://beta.kerbalstuff.com/mod/124/Chatterer/download/0.9.5", "Chatterer.zip"},                                                                     //KSP v1.0.4
+  []string{"http://kerbalstuff.com/mod/817/EngineLighting/download/1.4.0", "EngineLighting.zip"},                                                                //KSP v1.0.4
+  []string{"http://kerbal.curseforge.com/ksp-mods/220207-hotrockets-particle-fx-replacement/files/2244672/download", "hotrocket.zip"},                           //KSP v1.0.4
+  []string{"http://kerbalstuff.com/mod/743/Improved%20Chase%20Camera/download/v1.5.1", "ImprovedChaseCam.zip"},                                                  //KSP v1.0.4
+  []string{"http://github.com/richardbunt/Telemachus/releases/download/v1.4.30.0/Telemachus_1_4_30_0.zip", "Telemachus.zip"},                                    //KSP v1.0.4 
+  []string{"https://ksp.sarbian.com/jenkins/job/SmokeScreen/44/artifact/SmokeScreen-2.6.6.0.zip", "SmokeScreen.zip"},                                            //KSP v1.0.x
+  []string{"http://github.com/HappyFaceIndustries/BetterTimeWarp/releases/download/2.0/BetterTimeWarp_2.0.zip", "BetterTimeWarp.zip"},                           //KSP v1.0.x
+}
   
 func main() {
-fmt.Println("Downloading Base Mods")
-download(basemods)
+  var inputArguments *arguments = checkArguments()
+  if inputArguments == nil {
+    os.Exit(1)
+  }
 
-fmt.Println("Downloading Dev Mods")
-download(devmods)
+  fmt.Println("Downloading Base Mods")
+  download(basemods)
 
-fmt.Println("Downloading Beauty Mods")
-download(beautymods)
+  fmt.Println("Downloading Dev Mods")
+  download(devmods)
 
+  fmt.Println("Downloading Beauty Mods")
+  download(beautymods)
 }
