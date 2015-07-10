@@ -4,6 +4,7 @@ import (
   "os"
   "flag"
   "path/filepath"
+  "errors"
 )
 
 type Arguments struct {
@@ -11,13 +12,14 @@ type Arguments struct {
   DevFlag, CoreFlag, BeautyFlag, FullFlag bool
 }
 
-func CheckArguments() *Arguments {
+func CheckArguments() (*Arguments, error) {
   flag.Usage = func() {
     fmt.Printf("Usage: modScript -path=\"<Path to KSP folder>\" [-dev|-core|-beauty|-full]\n\n")
     flag.PrintDefaults()
   }
 
   inputArguments := new(Arguments)
+  var argErr error = nil
 
   flag.StringVar(&(inputArguments.Path), "path", "gaga", "Path to KSP")
 
@@ -39,19 +41,19 @@ func CheckArguments() *Arguments {
   if (checkSum == 0) {
     inputArguments.DevFlag = true
   } else if (checkSum > 1) {
-    fmt.Println("Please select only one installation type flag\n")
+    argErr = errors.New("Please select only one installation type flag")
     errorEncountered = true
   }
 
   if _, err := os.Stat(filepath.Join(inputArguments.Path, "/GameData/Squad")); os.IsNotExist(err) {
-    fmt.Println(inputArguments.Path + " doesn't seem to be a valid KSP installation\n")
+    argErr = errors.New(inputArguments.Path + " doesn't seem to be a valid KSP installation")
     errorEncountered = true
   }
 
   if (errorEncountered) {
     flag.Usage()
-    return nil
+    return nil, argErr
   }
 
-  return inputArguments
+  return inputArguments, argErr
 }

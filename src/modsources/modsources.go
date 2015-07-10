@@ -50,8 +50,8 @@ var Basemods = TwoDText{
   []string{"http://kerbalstuff.com/mod/344/TweakScale%20-%20Rescale%20Everything%21/download/v2.2.1", "TweakScale.zip"},                                           //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/515/B9%20Aerospace%20Procedural%20Parts/download/0.40", "B9ProcParts.zip"},                                                 //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/255/TweakableEverything/download/1.12", "TweakableEverything.zip"},                                                         //KSP v1.0.4
-  []string{"http://github.com/Swamp-Ig/ProceduralParts/releases/download/v1.1.6/ProceduralParts-1.1.6.zip", "ProceduralParts.zip"},                                //KSP v1.0.4
-}
+  []string{"http://github.com/Swamp-Ig/ProceduralParts/releases/download/v1.1.6/ProceduralParts-1.1.6.zip", "ProceduralParts.zip"}}                                //KSP v1.0.4
+
 
 var Devmods = TwoDText{
   []string{"http://github.com/snjo/FShangarExtender/releases/download/v3.3/FShangarExtender_3_3.zip", "FShangarExtender.zip"},                                   //KSP v1.0
@@ -67,8 +67,8 @@ var Devmods = TwoDText{
   []string{"https://github.com/CYBUTEK/KerbalEngineer/releases/download/1.0.17.0/KerbalEngineer-1.0.17.0.zip", "KerbalEngineer.zip"},                            //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/776/Take%20Command/download/1.1.4", "TakeCommand.zip"},                                                                   //KSP v1.0.4
   []string{"http://github.com/malahx/QuickSearch/releases/download/v1.13/QuickSearch-1.13.zip", "QuickSearch.zip"},                                              //KSP v1.0.x
-  []string{"http://github.com/malahx/QuickScroll/releases/download/v1.31/QuickScroll-1.31.zip", "QuickScroll.zip"},                                              //KSP v1.0.x
-}
+  []string{"http://github.com/malahx/QuickScroll/releases/download/v1.31/QuickScroll-1.31.zip", "QuickScroll.zip"}}                                              //KSP v1.0.x
+
 
 var Beautymods = TwoDText{
   []string{"http://kerbal.curseforge.com/ksp-mods/224876-planetshine/files/2237465/download", "PlanetShine.zip"},                                                //KSP v1.0
@@ -84,5 +84,4 @@ var Beautymods = TwoDText{
   []string{"http://kerbalstuff.com/mod/743/Improved%20Chase%20Camera/download/v1.5.1", "ImprovedChaseCam.zip"},                                                  //KSP v1.0.4
   []string{"http://github.com/richardbunt/Telemachus/releases/download/v1.4.30.0/Telemachus_1_4_30_0.zip", "Telemachus.zip"},                                    //KSP v1.0.4
   []string{"https://ksp.sarbian.com/jenkins/job/SmokeScreen/44/artifact/SmokeScreen-2.6.6.0.zip", "SmokeScreen.zip"},                                            //KSP v1.0.x
-  []string{"http://github.com/HappyFaceIndustries/BetterTimeWarp/releases/download/2.0/BetterTimeWarp_2.0.zip", "BetterTimeWarp.zip"},                           //KSP v1.0.x
-}
+  []string{"http://github.com/HappyFaceIndustries/BetterTimeWarp/releases/download/2.0/BetterTimeWarp_2.0.zip", "BetterTimeWarp.zip"}}                           //KSP v1.0.x
