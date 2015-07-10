@@ -146,13 +146,13 @@ func moveMods(relevantPaths *paths) {
   if err := helpers.CopyFile(relevantPaths.ksp2mModsPath + "/RealismOverhaul/GameData/RealismOverhaul/RemoteTech_Settings.cfg", relevantPaths.gameDataPath + "/RemoteTech/RemoteTech_Settings.cfg"); err != nil {
     fmt.Println(err)
   }
-  if err := helpers.CopyFile(relevantPaths.ksp2mModsPath + "/TextureReplacer/Extras/MM_ReflectionPluginWrapper.cfg", relevantPaths.gameDataPath); err != nil {
+  if err := helpers.CopyFile(relevantPaths.ksp2mModsPath + "/TextureReplacer/Extras/MM_ReflectionPluginWrapper.cfg", relevantPaths.gameDataPath + "/MM_ReflectionPluginWrapper.cfg"); err != nil {
     fmt.Println(err)
   }
-  if err := helpers.CopyFile(relevantPaths.ksp2mModsPath + "/StockPlusController.cfg", relevantPaths.gameDataPath); err != nil {
+  if err := helpers.CopyFile(relevantPaths.ksp2mModsPath + "/StockPlusController.cfg", relevantPaths.gameDataPath + "/StockPlusController.cfg"); err != nil {
     fmt.Println(err)
   }
-  if err := helpers.CopyFile(relevantPaths.ksp2mModsPath + "/StockPlusController.cfg", relevantPaths.gameDataPath); err != nil {
+  if err := helpers.CopyFile(relevantPaths.ksp2mModsPath + "/AIES_Node_Patch.cfg/AIES_Node_Patch.cfg", relevantPaths.gameDataPath + "/AIES_Node_Patch.cfg"); err != nil {
     fmt.Println(err)
   }
 }
