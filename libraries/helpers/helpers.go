@@ -87,18 +87,39 @@ func Download(A [][]string, targetDir string) {
   }
   client := &http.Client{Transport: tr}
 
+  // Strings
+  ftd := "Failed to download "
+  ta := ". Trying again."
+  errbody :=
+` three (3) consecutive times.
+Please make sure you have an internet connection and the newest version
+of the KSPtoMars mod installer.
+The error message was:
+
+`
+  errc := 0
   for i := 0; i < cap(A); i++ {
     uri := A[i][0]
     file := A[i][1]
     fmt.Println("[", i+1, " of ", cap(A), "]: ", file)
     out, _ := os.Create(filepath.Join(targetDir, file))
+    
     defer out.Close()
     resp, err := client.Get(uri)
     if err != nil {
-      fmt.Println(err)
-      os.Exit (3)
+      i--
+      errc++
+      if errc < 3 {
+        fmt.Println(ftd, file, ta)
+      } else {
+        fmt.Println(ftd, file, errbody, err, ".")
+        os.Exit(1)
+      }
     }
-    defer resp.Body.Close()
-    io.Copy(out, resp.Body)
+    
+    if err == nil {
+      defer resp.Body.Close()
+      io.Copy(out, resp.Body)
+    }
   }
 }
