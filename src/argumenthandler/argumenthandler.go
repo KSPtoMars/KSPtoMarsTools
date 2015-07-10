@@ -21,7 +21,7 @@ func CheckArguments() (*Arguments, error) {
   inputArguments := new(Arguments)
   var argErr error = nil
 
-  flag.StringVar(&(inputArguments.Path), "path", "gaga", "Path to KSP")
+  flag.StringVar(&(inputArguments.Path), "path", "", "Path to KSP")
 
   flag.BoolVar(&(inputArguments.DevFlag), "dev", false, "Flag for core and dev mods")
   flag.BoolVar(&(inputArguments.CoreFlag), "core", false, "Flag for core mods")
