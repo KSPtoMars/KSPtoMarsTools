@@ -56,9 +56,13 @@ func main() {
 }
 
 func removeUnneededParts(relevantPaths *paths) {
+  fmt.Println("\nRemoving unneccessary files (NOT WORKING)")
+
 }
 
 func moveMods(relevantPaths *paths) {
+  fmt.Println("\nMoving mods do GameData folder")
+
   // Generic move for mods
   files, err := ioutil.ReadDir(relevantPaths.ksp2mModsPath);
   if err != nil {
@@ -158,8 +162,10 @@ func moveMods(relevantPaths *paths) {
 }
 
 func cleanUp(relevantPaths *paths) {
+  fmt.Println("\nCleaning up")
+
   os.RemoveAll(relevantPaths.ksp2mModsPath)
-  os.MkdirAll(relevantPaths.gameDataPath + "licensesAndReadmes", 0755)
+  os.MkdirAll(relevantPaths.gameDataPath + "/licensesAndReadmes", 0755)
 
   files, err := ioutil.ReadDir(relevantPaths.gameDataPath);
   if err != nil {
@@ -178,6 +184,8 @@ func cleanUp(relevantPaths *paths) {
 }
 
 func removeOldDependencies(relevantPaths *paths) {
+  fmt.Println("\nRemoving outdated dependencies")
+
   var foldersToDelete = []string {
     "/UKS/GameData/CommunityResourcePack",
     "/Advanced_Jet_Engine/GameData/SolverEngines",
@@ -199,6 +207,8 @@ func removeOldDependencies(relevantPaths *paths) {
 }
 
 func setupPaths(inputArguments *argumenthandler.Arguments) paths {
+  fmt.Println("\nSetting up installation paths")
+
   var relevantPaths paths
   relevantPaths.kspPath = inputArguments.Path
   relevantPaths.gameDataPath = filepath.Join(inputArguments.Path, "/GameData")
@@ -214,15 +224,15 @@ func setupPaths(inputArguments *argumenthandler.Arguments) paths {
 }
 
 func downloadNecessaryMods(inputArguments *argumenthandler.Arguments, relevantPaths *paths) {
-  fmt.Println("Downloading all mods. This will take a while.")
+  fmt.Println("\nDownloading all mods. This will take a while.")
 
   // Core mods
-  fmt.Println("Downloading Base Mods")
+  fmt.Println("\nDownloading Base Mods")
   helpers.Download(modsources.Basemods, relevantPaths.ksp2mModsPath)
 
   // Dev mods
   if (inputArguments.DevFlag || inputArguments.FullFlag) {
-    fmt.Println("Downloading Dev Mods")
+    fmt.Println("\nDownloading Dev Mods")
     helpers.Download(modsources.Devmods, relevantPaths.ksp2mModsPath)
   }
 
@@ -233,12 +243,14 @@ func downloadNecessaryMods(inputArguments *argumenthandler.Arguments, relevantPa
       os.Remove(filepath.Join(relevantPaths.ksp2mModsPath, "2048.zip"))
     }
 
-    fmt.Println("Downloading Beauty Mods")
+    fmt.Println("\nDownloading Beauty Mods")
     helpers.Download(modsources.Beautymods, relevantPaths.ksp2mModsPath)
   }
 }
 
 func unpackAllZipFiles(relevantPaths *paths) {
+  fmt.Println("\nUnpacking mods")
+
   files, err := ioutil.ReadDir(filepath.Join(relevantPaths.ksp2mModsPath));
   if err != nil {
     fmt.Println(err)
