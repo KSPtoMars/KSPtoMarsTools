@@ -1,4 +1,5 @@
 {
+	"ArtifactsDest": "/var/www/010-ksptomars.org/public/modreleases",
 	"TasksExclude": [
 		"go-test"
 	],
