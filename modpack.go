@@ -4,9 +4,9 @@ import (
   "os"
   "io/ioutil"
   "path/filepath"
-  "github.com/Orkeren/KSPtoMarsTools/libraries/argumenthandler"
-  "github.com/Orkeren/KSPtoMarsTools/libraries/helpers"
-  "github.com/Orkeren/KSPtoMarsTools/libraries/modsources"
+  "github.com/KSPtoMars/KSPtoMarsTools/libraries/argumenthandler"
+  "github.com/KSPtoMars/KSPtoMarsTools/libraries/helpers"
+  "github.com/KSPtoMars/KSPtoMarsTools/libraries/modsources"
 )
 
 type paths struct {
