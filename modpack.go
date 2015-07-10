@@ -5,6 +5,8 @@ import (
   "io"
   "os"
   "flag"
+  "archive/zip"
+  "path/filepath"
 )
 
 type arguments struct {
@@ -12,12 +14,23 @@ type arguments struct {
   devFlag, coreFlag, beautyFlag, fullFlag bool
 }
 
+type paths struct {
+  kspPath, gameDataPath, ksp2mModsPath string
+}
+
+func doesDirExist bool (path string) {}
+  if _, err := os.Stat(path); os.IsNotExist(err) {
+	  return false
+  }
+  return true
+}
+
 func checkArguments() *arguments {
   flag.Usage = func() {
     fmt.Printf("Usage: modScript -path=\"<Path to KSP folder>\" [-dev|-core|-beauty|-full]\n\n")
     flag.PrintDefaults()
   }
-  
+
   inputArguments := new(arguments)
 
   flag.StringVar(&(inputArguments.path), "path", "gaga", "Path to KSP")
@@ -28,10 +41,10 @@ func checkArguments() *arguments {
   flag.BoolVar(&(inputArguments.fullFlag), "full", false, "Flag for all mods")
 
   flag.Parse()
-  
+
   var checkSum int = 0
   var errorEncountered = false
-  
+
   if (inputArguments.devFlag) { checkSum += 1 }
   if (inputArguments.coreFlag) { checkSum += 1 }
   if (inputArguments.beautyFlag) { checkSum += 1 }
@@ -40,22 +53,81 @@ func checkArguments() *arguments {
   if (checkSum == 0) {
     inputArguments.devFlag = true
   }
-  if (checkSum > 1) { 
+  if (checkSum > 1) {
     fmt.Println("Please select only one installation type flag\n")
     errorEncountered = true
   }
-  
+
   if _, err := os.Stat(inputArguments.path + "/GameData/Squad"); os.IsNotExist(err) {
     fmt.Println(inputArguments.path + " doesn't seem to be a valid KSP installation\n")
     errorEncountered = true
   }
 
-  if (errorEncountered) {  
+  if (errorEncountered) {
     flag.Usage()
     return nil
   }
-  
+
   return inputArguments
+}
+
+func unzip(zipFilePath, targetDir string) error {
+  zipReader, err := zip.OpenReader(zipFilePath)
+  if err != nil {
+    return err
+  }
+
+  defer func() {
+    if err := zipReader.Close(); err != nil {
+      panic(err)
+    }
+  }()
+
+  os.MkdirAll(targetDir, 0755)
+
+  // Closure to address file descriptors issue with all the deferred .Close() methods
+  extractAndWriteFile := func(file *zip.File) error {
+    fileReader, err := file.Open()
+    if err != nil {
+      return err
+    }
+    defer func() {
+      if err := fileReader.Close(); err != nil {
+        panic(err)
+      }
+    }()
+
+    path := filepath.Join(targetDir, file.Name)
+
+    if file.FileInfo().IsDir() {
+      os.MkdirAll(path, file.Mode())
+    } else {
+      file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, file.Mode())
+      if err != nil {
+        return err
+      }
+      defer func() {
+        if err := file.Close(); err != nil {
+          panic(err)
+        }
+      }()
+
+      _, err = io.Copy(file, fileReader)
+      if err != nil {
+        return err
+      }
+    }
+    return nil
+  }
+
+  for _, file := range zipReader.File {
+    err := extractAndWriteFile(file)
+    if err != nil {
+      return err
+    }
+  }
+
+  return nil
 }
 
 func download(A [][]string) {
@@ -75,7 +147,6 @@ func download(A [][]string) {
 type TwoDText [][]string //A slice of string slices
 
 var basemods = TwoDText{
-  []string{"http://kerbalstuff.com/mod/361/NEBULA%20Decals/download/1.01", "NebulaDecals.zip"},                                                                    //KSP v0.25
   []string{"http://github.com/NathanKell/CrossFeedEnabler/releases/download/v3.3/CrossFeedEnabler_v3.3.zip", "CrossFeedEnabler.zip"},                              //KSP v1.0
   []string{"http://github.com/Starwaster/DeadlyReentry/releases/download/v7.1.0/DeadlyReentry_7.1.0_The_Melificent_Edition.zip", "DeadlyReentry.zip"},             //KSP v1.0
   []string{"http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip"},                                                  //KSP v1.0.4
@@ -155,23 +226,53 @@ var beautymods = TwoDText{
   []string{"http://kerbalstuff.com/mod/817/EngineLighting/download/1.4.0", "EngineLighting.zip"},                                                                //KSP v1.0.4
   []string{"http://kerbal.curseforge.com/ksp-mods/220207-hotrockets-particle-fx-replacement/files/2244672/download", "hotrocket.zip"},                           //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/743/Improved%20Chase%20Camera/download/v1.5.1", "ImprovedChaseCam.zip"},                                                  //KSP v1.0.4
-  []string{"http://github.com/richardbunt/Telemachus/releases/download/v1.4.30.0/Telemachus_1_4_30_0.zip", "Telemachus.zip"},                                    //KSP v1.0.4 
+  []string{"http://github.com/richardbunt/Telemachus/releases/download/v1.4.30.0/Telemachus_1_4_30_0.zip", "Telemachus.zip"},                                    //KSP v1.0.4
   []string{"https://ksp.sarbian.com/jenkins/job/SmokeScreen/44/artifact/SmokeScreen-2.6.6.0.zip", "SmokeScreen.zip"},                                            //KSP v1.0.x
   []string{"http://github.com/HappyFaceIndustries/BetterTimeWarp/releases/download/2.0/BetterTimeWarp_2.0.zip", "BetterTimeWarp.zip"},                           //KSP v1.0.x
 }
-  
+
 func main() {
   var inputArguments *arguments = checkArguments()
+  var relevantPaths paths
   if inputArguments == nil {
     os.Exit(1)
   }
+  else {
+    relevantPaths.kspPath = inputArguments.path
+    relevantPaths.gameDataPath = filepath.Dir(filepath.Join(inputArguments.path, "GameData"))
+    relevantPaths.ksp2mModsPath = filepath.Dir(filepath.Join(inputArguments.path, "ksp2mMods"))
+  }
+
+  if doesDirExist(relevantPaths.ksp2mModsPath) {
+    os.RemoveAll(relevantPaths.ksp2mModsPath)
+  }
+  os.MkdirAll(relevantPaths.ksp2mModsPath, 0755)
+
+  if (inputArguments.beautyFlag) {
+    fmt.Println("Preparing beauty install.")
+  } else if (inputArguments.coreFlag){
+    fmt.Println("Preparing base install.")
+  } else if (inputArguments.fullFlag){
+    fmt.Println("Preparing full install.")
+  } else {
+    fmt.Println("Preparing developer install.")
+  }
+
+  fmt.Println("Downloading all mods. This will take a while.")
 
   fmt.Println("Downloading Base Mods")
   download(basemods)
 
-  fmt.Println("Downloading Dev Mods")
-  download(devmods)
+  if (inputArguments.devFlag || inputArguments.fullFlag) {
+    fmt.Println("Downloading Dev Mods")
+    download(devmods)
+  }
 
-  fmt.Println("Downloading Beauty Mods")
-  download(beautymods)
+  if (inputArguments.beautyFlag || inputArguments.fullFlag) {
+    // Remove low resolution RSS textures.
+    os.Remove(filepath.Join(relevantPaths.ksp2mModsPath, "2048.zip"))
+
+    fmt.Println("Downloading Beauty Mods")
+    download(beautymods)
+  }
 }
