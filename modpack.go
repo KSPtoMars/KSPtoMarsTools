@@ -175,7 +175,8 @@ func cleanUp(relevantPaths *paths) {
     if filepath.Ext(f.Name()) == ".txt" ||
        filepath.Ext(f.Name()) == ".md" ||
        filepath.Ext(f.Name()) == ".pdf" ||
-       filepath.Ext(f.Name()) == ".htm" {
+       filepath.Ext(f.Name()) == ".htm" ||
+       f.Name() == "License" {
        if err := os.Rename(relevantPaths.gameDataPath + f.Name(), relevantPaths.gameDataPath + "/licensesAndReadmes" + f.Name()); err != nil {
          fmt.Println(err)
        }
