@@ -24,13 +24,13 @@ var Basemods = TwoDText{
   []string{"http://ksptomars.org/public/AIES_Aerospace151.zip", "AIES_Aerospace151.zip"},                                                                          //KSP v?.?.?
   []string{"http://dl.dropboxusercontent.com/u/72893034/AIES_Patches/AIES_Node_Patch.cfg.zip", "AIES_Node_Patch.cfg.zip"},                                         //KSP v?.?.?
   []string{"https://github.com/Starwaster/DeadlyReentry/releases/download/7.2.1/DeadlyReentry_7.2.1_The_Melificent_Edition.zip", "DeadlyReentry.zip"},             //KSP v1.0.4
-  []string{"http://kerbal.curseforge.com/ksp-mods/228561-kerbal-inventory-system-kis/files/2246556/download", "KIS.zip"},                                          //KSP v1.0.4
-  []string{"http://kerbal.curseforge.com/ksp-mods/223900-kerbal-attachment-system-kas/files/2246546/download", "KAS.zip"},                                         //KSP v1.0.4
+  []string{"http://addons-origin.cursecdn.com/files/2246/556/KIS_v1.2.0.zip", "KIS.zip"},                                                                          //KSP v1.0.4
+  []string{"http://addons-origin.cursecdn.com/files/2246/546/KAS_v0.5.3.zip", "KAS.zip"},                                                                          //KSP v1.0.4
   []string{"http://github.com/ferram4/Ferram-Aerospace-Research/releases/download/v0.15.4_Glauert/FAR_0_15_4_Glauert.zip", "FAR.zip"},                             //KSP v1.0.4
   []string{"http://github.com/Mihara/RasterPropMonitor/releases/download/v0.21.1/RasterPropMonitor.0.21.1.zip", "RasterPropMonitor.zip"},                          //KSP v1.0.4
   []string{"http://github.com/camlost2/AJE/releases/download/2.2.1/Advanced_Jet_Engine-2.2.1.zip", "Advanced_Jet_Engine.zip"},                                     //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/27/FASA/download/5.35", "FASA.zip"},                                                                                        //KSP v1.0.4
-  []string{"http://kerbal.curseforge.com/ksp-mods/220462-ksp-avc-add-on-version-checker/files/2216818/download", "ksp-avc.zip"},                                   //KSP v1.0.4
+  []string{"http://addons-origin.cursecdn.com/files/2216/818/KSP-AVC-1.1.5.0.zip", "ksp-avc.zip"},                                                                 //KSP v1.0.4
   []string{"http://github.com/KSP-RO/SolverEngines/releases/download/v1.5/SolverEngines_v1.5.zip", "SolverEngines.zip"},                                           //KSP v1.0.4
   []string{"http://github.com/e-dog/ProceduralFairings/releases/download/v3.15/ProcFairings_3.15.zip", "ProcFairings.zip"},                                        //KSP v1.0.4
   []string{"http://github.com/NathanKell/ModularFuelSystem/releases/download/rf-v10.4.5/RealFuels_v10.4.5.zip", "RealFuels.zip"},                                  //KSP v1.0.4
@@ -38,7 +38,7 @@ var Basemods = TwoDText{
   []string{"http://github.com/KSP-RO/RealSolarSystem/releases/download/v10.1/RealSolarSystem_v10.1.zip", "RealSolarSystem.zip"},                                   //KSP v1.0.4
   []string{"http://github.com/RemoteTechnologiesGroup/RemoteTech/releases/download/1.6.7/RemoteTech-1.6.7.zip", "RemoteTech.zip"},                                 //KSP v1.0.4
   []string{"http://github.com/ducakar/TextureReplacer/releases/download/v2.4.7/TextureReplacer-2.4.7.zip", "TextureReplacer.zip"},                                 //KSP v1.0.4
-  []string{"http://kerbal.curseforge.com/ksp-mods/220213-taurus-hcv-3-75-m-csm-system/files/2244776/download", "Taurus.zip"},                                      //KSP v1.0.4
+  []string{"http://addons-origin.cursecdn.com/files/2244/776/TaurusHCVr1.5.2.zip", "Taurus.zip"},                                                                  //KSP v1.0.4
   []string{"http://github.com/DMagic1/Orbital-Science/releases/download/v1.0.7/DMagic_Orbital_Science-1.0.7.zip", "DMagic_Orbital_Science.zip"},                   //KSP v1.0.4
   []string{"http://github.com/timmersuk/Timmers_KSP/releases/download/0.7.3.3/KeepFit-0.7.3.3.zip", "KeepFit.zip"},                                                //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/8/Magic%20Smoke%20Industries%20Infernal%20Robotics/download/0.21.3", "InfernalRobotics.zip"},                               //KSP v1.0.4
@@ -60,13 +60,13 @@ var Basemods = TwoDText{
 var Devmods = TwoDText{
   []string{"http://github.com/snjo/FShangarExtender/releases/download/v3.3/FShangarExtender_3_3.zip", "FShangarExtender.zip"},                                   //KSP v1.0
   []string{"http://kerbalstuff.com/mod/414/StripSymmetry/download/v1.6", "StripSymmetry.zip"},                                                                   //KSP v1.0
-  []string{"http://kerbal.curseforge.com/ksp-mods/220602-rcs-build-aid/files/2243090/download", "RCSbuildAid.zip"},                                              //KSP v1.0.2
+  []string{"http://addons-origin.cursecdn.com/files/2243/90/RCSBuildAid_v0.7.2.zip", "RCSbuildAid.zip"},                                                         //KSP v1.0.2
   []string{"http://kerbalstuff.com/mod/731/Vessel%20Viewer/download/0.71", "VesselViewer.zip"},                                                                  //KSP v1.0.2
   []string{"http://github.com/MachXXV/EditorExtensions/releases/download/v2.12/EditorExtensions_v2.12.zip", "EditorExtensions.zip"},                             //KSP v1.0.3
   []string{"http://ksptomars.org/public/HyperEdit-1.4.1_for-KSP-1.0.zip", "HyperEdit.zip"},                                                                      //KSP v?.?.?
   []string{"http://github.com/Crzyrndm/FilterExtension/releases/download/2.3.1/Filter.Extensions.v2.3.1.zip", "Filter.Extensions.zip"},                          //KSP v1.0.4
-  []string{"http://kerbal.curseforge.com/ksp-mods/220530-part-wizard/files/2246104/download", "PartWizard.zip"},                                                 //KSP v1.0.4
-  []string{"http://kerbal.curseforge.com/ksp-mods/220221-mechjeb/files/2245658/download", "mechjeb2.zip"},                                                       //KSP v1.0.4
+  []string{"http://addons-origin.cursecdn.com/files/2246/104/PartWizard_1.2.2.zip", "PartWizard.zip"},                                                           //KSP v1.0.4
+  []string{"http://addons-origin.cursecdn.com/files/2245/786/MechJeb2-2.5.3.0.zip", "mechjeb2.zip"},                                                             //KSP v1.0.4
   []string{"http://github.com/nodrog6/LightsOut/releases/download/v0.1.4/LightsOut-v0.1.4.zip", "LightsOut.zip"},                                                //KSP v1.0.4
   []string{"http://github.com/CYBUTEK/KerbalEngineer/releases/download/1.0.17.0/KerbalEngineer-1.0.17.0.zip", "KerbalEngineer.zip"},                             //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/776/Take%20Command/download/1.1.4", "TakeCommand.zip"},                                                                   //KSP v1.0.4
@@ -75,7 +75,7 @@ var Devmods = TwoDText{
 
 
 var Beautymods = TwoDText{
-  []string{"http://kerbal.curseforge.com/ksp-mods/224876-planetshine/files/2237465/download", "PlanetShine.zip"},                                                //KSP v1.0
+  []string{"http://addons-origin.cursecdn.com/files/2237/465/PlanetShine-0.2.3.1.zip", "PlanetShine.zip"},                                                       //KSP v1.0
   []string{"http://kerbalstuff.com/mod/224/Rover%20Wheel%20Sounds/download/1.2", "RoverWheelSounds.zip"},                                                        //KSP v1.0
   []string{"http://kerbalstuff.com/mod/190/Camera%20Tools/download/v1.3", "CameraTools.zip"},                                                                    //KSP v1.0.2
   []string{"http://kerbalstuff.com/mod/381/Collision%20FX/download/3.2", "CollisionFX.zip"},                                                                     //KSP v1.0.2
@@ -84,7 +84,7 @@ var Beautymods = TwoDText{
   []string{"http://github.com/MOARdV/DistantObject/releases/download/v1.5.7/DistantObject_1.5.7.zip", "DistantObject.zip"},                                      //KSP v1.0.4
   []string{"http://beta.kerbalstuff.com/mod/124/Chatterer/download/0.9.5", "Chatterer.zip"},                                                                     //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/817/EngineLighting/download/1.4.0", "EngineLighting.zip"},                                                                //KSP v1.0.4
-  []string{"http://kerbal.curseforge.com/ksp-mods/220207-hotrockets-particle-fx-replacement/files/2244672/download", "hotrocket.zip"},                           //KSP v1.0.4
+  []string{"http://addons-origin.cursecdn.com/files/2244/672/HotRockets_1.0.4_Complete_Nazari.zip", "hotrocket.zip"},                                            //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/743/Improved%20Chase%20Camera/download/v1.5.1", "ImprovedChaseCam.zip"},                                                  //KSP v1.0.4
   []string{"http://github.com/richardbunt/Telemachus/releases/download/v1.4.30.0/Telemachus_1_4_30_0.zip", "Telemachus.zip"},                                    //KSP v1.0.4
   []string{"https://ksp.sarbian.com/jenkins/job/SmokeScreen/44/artifact/SmokeScreen-2.6.6.0.zip", "SmokeScreen.zip"},                                            //KSP v1.0.x
