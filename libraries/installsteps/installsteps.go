@@ -205,20 +205,17 @@ func MoveMods(relevantPaths *Paths) error {
   }
 
   // Fixing Configs
-  if err := helpers.CopyDir(filepath.Join(relevantPaths.Ksp2mModsPath, "RealismOverhaul/GameData"), relevantPaths.GameDataPath); err != nil {
-    fmt.Println(err)
+  var configFixes = [][]string {
+    []string {filepath.Join(relevantPaths.Ksp2mModsPath, "RealismOverhaul/GameData"), relevantPaths.GameDataPath},
+    []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/RealismOverhaul/GameData/RealismOverhaul/RemoteTech_Settings.cfg"), relevantPaths.GameDataPath + "/RemoteTech/RemoteTech_Settings.cfg"},
+    []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/TextureReplacer/Extras/MM_ReflectionPluginWrapper.cfg"), relevantPaths.GameDataPath + "/MM_ReflectionPluginWrapper.cfg"},
+    []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/StockPlusController.cfg"), relevantPaths.GameDataPath + "/StockPlusController.cfg"},
+    []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/AIES_Node_Patch.cfg/AIES_Node_Patch.cfg"), relevantPaths.GameDataPath + "/AIES_Node_Patch.cfg"},
   }
-  if err := helpers.CopyFile(relevantPaths.Ksp2mModsPath + "/RealismOverhaul/GameData/RealismOverhaul/RemoteTech_Settings.cfg", relevantPaths.GameDataPath + "/RemoteTech/RemoteTech_Settings.cfg"); err != nil {
-    fmt.Println(err)
-  }
-  if err := helpers.CopyFile(relevantPaths.Ksp2mModsPath + "/TextureReplacer/Extras/MM_ReflectionPluginWrapper.cfg", relevantPaths.GameDataPath + "/MM_ReflectionPluginWrapper.cfg"); err != nil {
-    fmt.Println(err)
-  }
-  if err := helpers.CopyFile(relevantPaths.Ksp2mModsPath + "/StockPlusController.cfg", relevantPaths.GameDataPath + "/StockPlusController.cfg"); err != nil {
-    fmt.Println(err)
-  }
-  if err := helpers.CopyFile(relevantPaths.Ksp2mModsPath + "/AIES_Node_Patch.cfg/AIES_Node_Patch.cfg", relevantPaths.GameDataPath + "/AIES_Node_Patch.cfg"); err != nil {
-    fmt.Println(err)
+  for _, fix := range configFixes {
+    if err := helpers.CopyDir(fix[0], fix[1]); err != nil {
+      fmt.Println(err)
+    }
   }
 
   return nil
