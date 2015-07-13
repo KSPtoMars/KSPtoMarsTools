@@ -64,19 +64,32 @@ func UnpackAllZipFiles(relevantPaths *Paths) {
   if err != nil {
     fmt.Println(err)
   }
+
+  var maxMessageSize int = 0
   for i, f := range files {
     if (filepath.Ext(f.Name()) != ".zip") {
       continue
     }
-    fmt.Println("Unzipping [",i+1, "of", len(files),"]: " + f.Name())
+
+    messageSize, _ := fmt.Printf("\rUnzipping [%d of %d]: %s", i+1, len(files), f.Name())
+    if (messageSize > maxMessageSize) {
+      maxMessageSize = messageSize
+    } else {
+      for i := messageSize; i < maxMessageSize; i++ {
+        fmt.Printf(" ")
+      }
+    }
+    fmt.Printf("\r")
 
     var fileToExtract = filepath.Join(relevantPaths.Ksp2mModsPath, f.Name())
     var pathToExtractTo = filepath.Join(relevantPaths.Ksp2mModsPath, f.Name()[0:len(f.Name()) - 4])
     if err := helpers.Unzip(fileToExtract, pathToExtractTo); err != nil {
-      fmt.Println("Error while unzipping " + f.Name())
+      fmt.Println("\nError while unzipping " + f.Name())
       fmt.Println(err)
     }
   }
+
+  fmt.Println("")
 }
 
 func RemoveOldDependencies(relevantPaths *Paths) {
@@ -84,6 +97,7 @@ func RemoveOldDependencies(relevantPaths *Paths) {
 
   var foldersToDelete = []string {
     "/UKS/GameData/CommunityResourcePack",
+    "/UKS/GameData/Firespitter",
     "/Advanced_Jet_Engine/GameData/SolverEngines",
     "/B9ProcParts/GameData/CrossFeedEnabler",
     "/FAR/GameData/ModularFlightIntegrator",
@@ -185,7 +199,7 @@ func MoveMods(relevantPaths *Paths) error {
   customMoveMods(relevantPaths, customFolders)
 
   // Fixing Configs
-  if err := helpers.CopyFile(filepath.Join(relevantPaths.Ksp2mModsPath, "RealismOverhaul/GameData"), relevantPaths.GameDataPath); err != nil {
+  if err := helpers.CopyDir(filepath.Join(relevantPaths.Ksp2mModsPath, "RealismOverhaul/GameData"), relevantPaths.GameDataPath); err != nil {
     fmt.Println(err)
   }
 

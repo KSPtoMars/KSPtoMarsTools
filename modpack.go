@@ -16,6 +16,8 @@ func main() {
     os.Exit(1)
   }
 
+  fmt.Println("This is v2.0.0-dev of the ksp2mars modpack script.\n")
+
   // Setup all necessary paths
   relevantPaths := installsteps.SetupPaths(inputArguments)
 

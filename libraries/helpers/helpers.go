@@ -98,10 +98,20 @@ The error message was:
 
 `
   errc := 0
+  var maxMessageSize int = 0
   for i := 0; i < cap(A); i++ {
     uri := A[i][0]
     file := A[i][1]
-    fmt.Println("Downloading [", i+1, " of ", cap(A), "]: ", file)
+    messageSize, _ := fmt.Printf("\rDownloading [%d of %d]: %s", i+1, cap(A), file)
+    if (messageSize > maxMessageSize) {
+      maxMessageSize = messageSize
+    } else {
+      for i := messageSize; i < maxMessageSize; i++ {
+        fmt.Printf(" ")
+      }
+    }
+    fmt.Printf("\r")
+
     out, _ := os.Create(filepath.Join(targetDir, file))
 
     defer out.Close()
@@ -122,4 +132,5 @@ The error message was:
       io.Copy(out, resp.Body)
     }
   }
+  fmt.Println("")
 }
