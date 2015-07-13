@@ -101,9 +101,9 @@ The error message was:
   for i := 0; i < cap(A); i++ {
     uri := A[i][0]
     file := A[i][1]
-    fmt.Println("[", i+1, " of ", cap(A), "]: ", file)
+    fmt.Println("Downloading [", i+1, " of ", cap(A), "]: ", file)
     out, _ := os.Create(filepath.Join(targetDir, file))
-    
+
     defer out.Close()
     resp, err := client.Get(uri)
     if err != nil {
@@ -116,7 +116,7 @@ The error message was:
         os.Exit(1)
       }
     }
-    
+
     if err == nil {
       defer resp.Body.Close()
       io.Copy(out, resp.Body)
