@@ -16,21 +16,21 @@ func main() {
     os.Exit(1)
   }
 
-  fmt.Println("This is v2.0.0-dev of the ksp2mars modpack script.\n")
-
-  // Setup all necessary paths
-  relevantPaths := installsteps.SetupPaths(inputArguments)
+  fmt.Println("\nThis is v2.0.0-dev of the ksp2mars modpack script.\n")
 
   // Start with mod installation
   if (inputArguments.BeautyFlag) {
-    fmt.Println("Preparing beauty install.")
+    fmt.Println("Preparing beauty install.\n")
   } else if (inputArguments.CoreFlag){
-    fmt.Println("Preparing base install.")
+    fmt.Println("Preparing base install.\n")
   } else if (inputArguments.FullFlag){
-    fmt.Println("Preparing full install.")
+    fmt.Println("Preparing full install.\n")
   } else {
-    fmt.Println("Preparing developer install.")
+    fmt.Println("Preparing developer install.\n")
   }
+
+  // Setup all necessary paths
+  relevantPaths := installsteps.SetupPaths(inputArguments)
 
   // Download necessary mods
   installsteps.DownloadNecessaryMods(inputArguments, &relevantPaths)
