@@ -27,7 +27,7 @@ var Basemods = TwoDText{
   []string{"http://kerbal.curseforge.com/ksp-mods/228561-kerbal-inventory-system-kis/files/2246556/download", "KIS.zip"},                                          //KSP v1.0.4
   []string{"http://kerbal.curseforge.com/ksp-mods/223900-kerbal-attachment-system-kas/files/2246546/download", "KAS.zip"},                                         //KSP v1.0.4
   []string{"http://github.com/ferram4/Ferram-Aerospace-Research/releases/download/v0.15.4_Glauert/FAR_0_15_4_Glauert.zip", "FAR.zip"},                             //KSP v1.0.4
-  []string{"http://github.com/Mihara/RasterPropMonitor/releases/download/v0.21.0/RasterPropMonitor.0.21.0.zip", "RasterPropMonitor.zip"},                          //KSP v1.0.4
+  []string{"http://github.com/Mihara/RasterPropMonitor/releases/download/v0.21.1/RasterPropMonitor.0.21.1.zip", "RasterPropMonitor.zip"},                          //KSP v1.0.4
   []string{"http://github.com/camlost2/AJE/releases/download/2.2.1/Advanced_Jet_Engine-2.2.1.zip", "Advanced_Jet_Engine.zip"},                                     //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/27/FASA/download/5.35", "FASA.zip"},                                                                                        //KSP v1.0.4
   []string{"http://kerbal.curseforge.com/ksp-mods/220462-ksp-avc-add-on-version-checker/files/2216818/download", "ksp-avc.zip"},                                   //KSP v1.0.4

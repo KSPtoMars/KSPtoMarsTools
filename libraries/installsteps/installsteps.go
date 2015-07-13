@@ -105,8 +105,9 @@ func CreateBackup(relevantPaths *Paths) string {
   fmt.Println("\nCreating backup of GameData folder")
 
   var backupPath = filepath.Join(relevantPaths.GameDataPath, "/GameData_Backup_By_KSPtoMars_Modscript")
-  os.Rename(relevantPaths.GameDataPath, backupPath)
-
+  if err := os.Rename(relevantPaths.GameDataPath, backupPath); err != nil {
+    fmd.Println(err)
+  }
   os.MkdirAll(filepath.Join(relevantPaths.GameDataPath, "/Squad"), 0775)
   helpers.CopyDir(filepath.Join(backupPath, "/Squad"), filepath.Join(relevantPaths.GameDataPath, "/Squad"))
 
@@ -117,12 +118,14 @@ func RollBack(relevantPaths *Paths, backupPath *string) {
   fmt.Println("\nRolling back")
 
   os.RemoveAll(filepath.Join(relevantPaths.GameDataPath))
-  os.Rename(*backupPath, relevantPaths.GameDataPath)
+  if err := os.Rename(*backupPath, relevantPaths.GameDataPath); err != nil {
+    fmd.Println(err)
+  }
 }
 
 
 func MoveMods(relevantPaths *Paths) error {
-  fmt.Println("\nMoving mods do GameData folder")
+  fmt.Println("\nMoving mods to GameData folder")
 
   // Generic move for mods
   files, err := ioutil.ReadDir(relevantPaths.Ksp2mModsPath);
@@ -205,15 +208,19 @@ func MoveMods(relevantPaths *Paths) error {
   }
 
   // Fixing Configs
+
+  if err := helpers.CopyFile(filepath.Join(relevantPaths.Ksp2mModsPath, "RealismOverhaul/GameData"), relevantPaths.GameDataPath); err != nil {
+    fmt.Println(err)
+  }
+
   var configFixes = [][]string {
-    []string {filepath.Join(relevantPaths.Ksp2mModsPath, "RealismOverhaul/GameData"), relevantPaths.GameDataPath},
     []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/RealismOverhaul/GameData/RealismOverhaul/RemoteTech_Settings.cfg"), relevantPaths.GameDataPath + "/RemoteTech/RemoteTech_Settings.cfg"},
     []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/TextureReplacer/Extras/MM_ReflectionPluginWrapper.cfg"), relevantPaths.GameDataPath + "/MM_ReflectionPluginWrapper.cfg"},
     []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/StockPlusController.cfg"), relevantPaths.GameDataPath + "/StockPlusController.cfg"},
     []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/AIES_Node_Patch.cfg/AIES_Node_Patch.cfg"), relevantPaths.GameDataPath + "/AIES_Node_Patch.cfg"},
   }
   for _, fix := range configFixes {
-    if err := helpers.CopyDir(fix[0], fix[1]); err != nil {
+    if err := helpers.CopyFile(fix[0], fix[1]); err != nil {
       fmt.Println(err)
     }
   }
@@ -275,7 +282,7 @@ func deleteOldModuleManagers(relevantPaths *Paths) error {
 
 func deleteListOfFiles(relevantPaths *Paths, filesToDelete []string) error {
   for i, pattern := range filesToDelete {
-    fmt.Println("Deleting pattern", i+1, "of", len(filesToDelete))
+    fmt.Println("Deleting pattern [", i+1, "of", len(filesToDelete), "]")
     files, err := filepath.Glob(filepath.Join(relevantPaths.GameDataPath, pattern))
     if err != nil {
       fmt.Println("Encountered Error! i =", i,", pattern =", pattern)
