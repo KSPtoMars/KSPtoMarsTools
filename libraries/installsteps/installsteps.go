@@ -104,9 +104,9 @@ func RemoveOldDependencies(relevantPaths *Paths) {
 func CreateBackup(relevantPaths *Paths) string {
   fmt.Println("\nCreating backup of GameData folder")
 
-  var backupPath = filepath.Join(relevantPaths.GameDataPath, "/GameData_Backup_By_KSPtoMars_Modscript")
+  var backupPath = filepath.Join(relevantPaths.KspPath, "/GameData_Backup_By_KSPtoMars_Modscript")
   if err := os.Rename(relevantPaths.GameDataPath, backupPath); err != nil {
-    fmd.Println(err)
+    fmt.Println(err)
   }
   os.MkdirAll(filepath.Join(relevantPaths.GameDataPath, "/Squad"), 0775)
   helpers.CopyDir(filepath.Join(backupPath, "/Squad"), filepath.Join(relevantPaths.GameDataPath, "/Squad"))
@@ -119,7 +119,7 @@ func RollBack(relevantPaths *Paths, backupPath *string) {
 
   os.RemoveAll(filepath.Join(relevantPaths.GameDataPath))
   if err := os.Rename(*backupPath, relevantPaths.GameDataPath); err != nil {
-    fmd.Println(err)
+    fmt.Println(err)
   }
 }
 
@@ -149,8 +149,8 @@ func MoveMods(relevantPaths *Paths) error {
   }
 
   // Custom move for mods
-  // core install
-  var coreCustomFolder = []string{
+  var customFolders = []string {
+    // core install
     "/CrossFeedEnabler",
     "/DeadlyReentry",
     "/RealFuels",
@@ -165,16 +165,7 @@ func MoveMods(relevantPaths *Paths) error {
     "/HullcaMove-ItemDS",
     "/JDiminishingRTG/JDiminishingRTG_v1_3a/GameData",
     "/NebulaDecals",
-  }
-  for _, folder := range coreCustomFolder {
-    var pathToModGameData = filepath.Join(relevantPaths.Ksp2mModsPath, folder)
-    if err := helpers.CopyDir(pathToModGameData, relevantPaths.GameDataPath); err != nil {
-      fmt.Println(err)
-    }
-  }
-
-  // dev install
-  var devCustomFolder = []string {
+    // dev install
     "/mechjeb2",
     "/VesselViewer",
     "/FShangarExtender",
@@ -183,16 +174,7 @@ func MoveMods(relevantPaths *Paths) error {
     "/StripSymmetry/Gamedata",
     "/EditorExtensions",
     "/KerbalEngineer",
-  }
-  for _, folder := range devCustomFolder {
-    var pathToModGameData = filepath.Join(relevantPaths.Ksp2mModsPath, folder)
-    if err := helpers.CopyDir(pathToModGameData, relevantPaths.GameDataPath); err != nil {
-      fmt.Println(err)
-    }
-  }
-
-  // beauty install
-  var beautyCustomFolder = []string {
+    // beauty install
     "/hotrocket",
     "/DistantObject/Alternate Planet Color Configs/Real Solar System (metaphor's PlanetFactory config)",
     "/EngineLighting/EngineLight/GameData",
@@ -200,15 +182,9 @@ func MoveMods(relevantPaths *Paths) error {
     "/PlanetShine/Alternate Colors/Real Solar System",
     "/RoverWheelSounds",
   }
-  for _, folder := range beautyCustomFolder {
-    var pathToModGameData = filepath.Join(relevantPaths.Ksp2mModsPath, folder)
-    if err := helpers.CopyDir(pathToModGameData, relevantPaths.GameDataPath); err != nil {
-      fmt.Println(err)
-    }
-  }
+  customMoveMods(relevantPaths, customFolders)
 
   // Fixing Configs
-
   if err := helpers.CopyFile(filepath.Join(relevantPaths.Ksp2mModsPath, "RealismOverhaul/GameData"), relevantPaths.GameDataPath); err != nil {
     fmt.Println(err)
   }
@@ -228,10 +204,20 @@ func MoveMods(relevantPaths *Paths) error {
   return nil
 }
 
+func customMoveMods(relevantPaths *Paths, customPaths []string) {
+  for _, folder := range customPaths {
+    var pathToModGameData = filepath.Join(relevantPaths.Ksp2mModsPath, folder)
+    if helpers.DoesDirExist(pathToModGameData) == false {
+      continue
+    }
+    if err := helpers.CopyDir(pathToModGameData, relevantPaths.GameDataPath); err != nil {
+      fmt.Println(err)
+    }
+  }
+}
+
 func CleanUp(relevantPaths *Paths, backupPath *string) {
   fmt.Println("\nCleaning up")
-
-  os.RemoveAll(relevantPaths.Ksp2mModsPath)
 
   os.MkdirAll(filepath.Join(relevantPaths.GameDataPath, "/licensesAndReadmes"), 0755)
 
@@ -251,6 +237,7 @@ func CleanUp(relevantPaths *Paths, backupPath *string) {
     }
   }
 
+  os.RemoveAll(relevantPaths.Ksp2mModsPath)
   os.RemoveAll(*backupPath)
 }
 
@@ -282,7 +269,6 @@ func deleteOldModuleManagers(relevantPaths *Paths) error {
 
 func deleteListOfFiles(relevantPaths *Paths, filesToDelete []string) error {
   for i, pattern := range filesToDelete {
-    fmt.Println("Deleting pattern [", i+1, "of", len(filesToDelete), "]")
     files, err := filepath.Glob(filepath.Join(relevantPaths.GameDataPath, pattern))
     if err != nil {
       fmt.Println("Encountered Error! i =", i,", pattern =", pattern)
