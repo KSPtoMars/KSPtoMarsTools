@@ -7,7 +7,7 @@
 	"TasksExclude": [
 		"go-test"
 	],
-	"BuildConstraints": "linux windows darwin, !arm",
+	"BuildConstraints": "linux,!arm windows darwin",
 	"PackageVersion": "4.0.1",
 	"PrereleaseInfo": "beta",
 	"TaskSettings": {
