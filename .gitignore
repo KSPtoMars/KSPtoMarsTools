@@ -1,2 +1,3 @@
 ## Ignore compiled windows binaries
 *.exe
+.goxc.local.json
