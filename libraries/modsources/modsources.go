@@ -53,7 +53,7 @@ var Basemods = TwoDText{
   []string{"https://ksp.sarbian.com/jenkins/job/ModularFlightIntegrator/9/artifact/ModularFlightIntegrator-1.1.1.0.zip", "ModularFlightIntegrator.zip"},           //KSP v1.0.4
   []string{"http://github.com/KSP-RO/RealHeat/releases/download/v1.0/RealHeat_v1.0.zip", "RealHeat.zip"},                                                          //KSP v1.0.4
   []string{"http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip"},                                                  //KSP v1.0.4
-  []string{"https://github.com/snjo/Firespitter/releases/download/v7.1.3/Firespitter_7.1.3.zip", "Firespitter.zip"},                                               //KSP v1.0.4
+  []string{"http://github.com/snjo/Firespitter/releases/download/v7.1.4/Firespitter_7.1.4_PLUGIN.zip", "Firespitter.zip"},                                               //KSP v1.0.4
   []string{"http://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.1/KSPtoMars_0.0.1.zip", "KSPtoMars.zip"},                                              //KSP v1.0.x
 }
 

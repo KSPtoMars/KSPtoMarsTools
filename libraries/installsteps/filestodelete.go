@@ -155,9 +155,4 @@ var filesToDelete = []string {
   "/RSCapsuledyne/Parts/Nuke",
   // Realism Overhaul
   "/RealismOverhaul/Parts/NoseconeCockpit",
-  // Firespitter
-  "/Firespitter/Parts/[a-nA-N]",
-  "/Firespitter/Parts/P[b-z]*",
-  "/Firespitter/Parts/[r-zR-Z]*",
-  "/Firespitter/Parts/Firespitterpartsguide*",
 }
