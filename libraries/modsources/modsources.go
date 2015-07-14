@@ -49,11 +49,11 @@ var Basemods = TwoDText{
   []string{"http://kerbalstuff.com/mod/344/TweakScale%20-%20Rescale%20Everything%21/download/v2.2.1", "TweakScale.zip"},                                           //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/515/B9%20Aerospace%20Procedural%20Parts/download/0.40", "B9ProcParts.zip"},                                                 //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/255/TweakableEverything/download/1.12", "TweakableEverything.zip"},                                                         //KSP v1.0.4
-  []string{"http://github.com/Swamp-Ig/ProceduralParts/releases/download/v1.1.6/ProceduralParts-1.1.6.zip", "ProceduralParts.zip"},                                //KSP v1.0.4
+  []string{"http://github.com/Swamp-Ig/ProceduralParts/releases/download/v1.1.7/ProceduralParts-1.1.7.zip", "ProceduralParts.zip"},                                //KSP v1.0.4
   []string{"https://ksp.sarbian.com/jenkins/job/ModularFlightIntegrator/9/artifact/ModularFlightIntegrator-1.1.1.0.zip", "ModularFlightIntegrator.zip"},           //KSP v1.0.4
   []string{"http://github.com/KSP-RO/RealHeat/releases/download/v1.0/RealHeat_v1.0.zip", "RealHeat.zip"},                                                          //KSP v1.0.4
   []string{"http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip"},                                                  //KSP v1.0.4
-  []string{"http://github.com/snjo/Firespitter/releases/download/v7.1.4/Firespitter_7.1.4_PLUGIN.zip", "Firespitter.zip"},                                               //KSP v1.0.4
+  []string{"http://github.com/snjo/Firespitter/releases/download/v7.1.4/Firespitter_7.1.4_PLUGIN.zip", "Firespitter.zip"},                                         //KSP v1.0.4
   []string{"http://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.1/KSPtoMars_0.0.1.zip", "KSPtoMars.zip"},                                              //KSP v1.0.x
 }
 
@@ -83,7 +83,7 @@ var Beautymods = TwoDText{
   []string{"http://kerbalstuff.com/mod/700/Scatterer/download/0.151", "Scatterer.zip"},                                                                          //KSP v1.0.2
   []string{"http://github.com/KSP-RO/RSS-Textures/releases/download/v10.0/8192.zip", "8192.zip"},                                                                //KSP v?.?.?
   []string{"http://github.com/MOARdV/DistantObject/releases/download/v1.5.7/DistantObject_1.5.7.zip", "DistantObject.zip"},                                      //KSP v1.0.4
-  []string{"http://beta.kerbalstuff.com/mod/124/Chatterer/download/0.9.5", "Chatterer.zip"},                                                                     //KSP v1.0.4
+  []string{"http://beta.kerbalstuff.com/mod/124/Chatterer/download/0.9.6", "Chatterer.zip"},                                                                     //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/817/EngineLighting/download/1.4.0", "EngineLighting.zip"},                                                                //KSP v1.0.4
   []string{"http://addons-origin.cursecdn.com/files/2244/672/HotRockets_1.0.4_Complete_Nazari.zip", "hotrocket.zip"},                                            //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/743/Improved%20Chase%20Camera/download/v1.5.1", "ImprovedChaseCam.zip"},                                                  //KSP v1.0.4
