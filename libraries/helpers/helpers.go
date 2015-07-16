@@ -81,7 +81,7 @@ func DoesFileExist(path string) bool {
 }
 
 
-func Download(A [][]string, targetDir string) {
+func Download(A [][]string, targetDir string) error {
   tr := &http.Transport{
     TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
   }
@@ -123,7 +123,7 @@ The error message was:
         fmt.Println(ftd, file, ta)
       } else {
         fmt.Println(ftd, file, errbody, err, ".")
-        os.Exit(1)
+        return err
       }
     }
 
@@ -133,4 +133,5 @@ The error message was:
     }
   }
   fmt.Println("")
+  return nil
 }

@@ -32,17 +32,21 @@ func SetupPaths(inputArguments *argumenthandler.Arguments) Paths {
   return relevantPaths
 }
 
-func DownloadNecessaryMods(inputArguments *argumenthandler.Arguments, relevantPaths *Paths) {
+func DownloadNecessaryMods(inputArguments *argumenthandler.Arguments, relevantPaths *Paths) error {
   fmt.Println("\nDownloading all mods. This will take a while.")
 
   // Core mods
   fmt.Println("\nDownloading Base Mods")
-  helpers.Download(modsources.Basemods, relevantPaths.Ksp2mModsPath)
+  if err := helpers.Download(modsources.Basemods, relevantPaths.Ksp2mModsPath); err != nil {
+    return err
+  }
 
   // Dev mods
   if (inputArguments.DevFlag || inputArguments.FullFlag) {
     fmt.Println("\nDownloading Dev Mods")
-    helpers.Download(modsources.Devmods, relevantPaths.Ksp2mModsPath)
+    if err := helpers.Download(modsources.Devmods, relevantPaths.Ksp2mModsPath); err != nil {
+      return err
+    }
   }
 
   // Beauty mods
@@ -53,16 +57,19 @@ func DownloadNecessaryMods(inputArguments *argumenthandler.Arguments, relevantPa
     }
 
     fmt.Println("\nDownloading Beauty Mods")
-    helpers.Download(modsources.Beautymods, relevantPaths.Ksp2mModsPath)
+    if err := helpers.Download(modsources.Beautymods, relevantPaths.Ksp2mModsPath); err != nil {
+      return err
+    }
   }
+  return nil
 }
 
-func UnpackAllZipFiles(relevantPaths *Paths) {
+func UnpackAllZipFiles(relevantPaths *Paths) error {
   fmt.Println("\nUnpacking mods")
 
   files, err := ioutil.ReadDir(filepath.Join(relevantPaths.Ksp2mModsPath));
   if err != nil {
-    fmt.Println(err)
+    return err
   }
 
   var maxMessageSize int = 0
@@ -84,12 +91,12 @@ func UnpackAllZipFiles(relevantPaths *Paths) {
     var fileToExtract = filepath.Join(relevantPaths.Ksp2mModsPath, f.Name())
     var pathToExtractTo = filepath.Join(relevantPaths.Ksp2mModsPath, f.Name()[0:len(f.Name()) - 4])
     if err := helpers.Unzip(fileToExtract, pathToExtractTo); err != nil {
-      fmt.Println("\nError while unzipping " + f.Name())
-      fmt.Println(err)
+      return err
     }
   }
 
   fmt.Println("")
+  return nil
 }
 
 func RemoveOldDependencies(relevantPaths *Paths) {
@@ -144,7 +151,7 @@ func MoveMods(relevantPaths *Paths) error {
   // Generic move for mods
   files, err := ioutil.ReadDir(relevantPaths.Ksp2mModsPath);
   if err != nil {
-    fmt.Println(err)
+    return err
   }
   for _, f := range files {
     if f.IsDir() == false {
@@ -158,7 +165,7 @@ func MoveMods(relevantPaths *Paths) error {
     }
 
     if err := helpers.CopyDir(pathToModGameData, relevantPaths.GameDataPath); err != nil {
-      fmt.Println(err)
+      return err
     }
   }
 
@@ -196,11 +203,13 @@ func MoveMods(relevantPaths *Paths) error {
     "/PlanetShine/Alternate Colors/Real Solar System",
     "/RoverWheelSounds",
   }
-  customMoveMods(relevantPaths, customFolders)
+  if err := customMoveMods(relevantPaths, customFolders); err != nil {
+    return err
+  }
 
   // Fixing Configs
   if err := helpers.CopyDir(filepath.Join(relevantPaths.Ksp2mModsPath, "RealismOverhaul/GameData"), relevantPaths.GameDataPath); err != nil {
-    fmt.Println(err)
+    return err
   }
 
   var configFixes = [][]string {
@@ -213,23 +222,25 @@ func MoveMods(relevantPaths *Paths) error {
   }
   for _, fix := range configFixes {
     if err := helpers.CopyFile(fix[0], fix[1]); err != nil {
-      fmt.Println(err)
+      return err
     }
   }
 
   return nil
 }
 
-func customMoveMods(relevantPaths *Paths, customPaths []string) {
+func customMoveMods(relevantPaths *Paths, customPaths []string) error {
   for _, folder := range customPaths {
     var pathToModGameData = filepath.Join(relevantPaths.Ksp2mModsPath, folder)
     if helpers.DoesDirExist(pathToModGameData) == false {
       continue
     }
     if err := helpers.CopyDir(pathToModGameData, relevantPaths.GameDataPath); err != nil {
-      fmt.Println(err)
+      return err
     }
   }
+  
+  return nil
 }
 
 func CleanUp(relevantPaths *Paths, backupPath *string) {
