@@ -128,6 +128,9 @@ var filesToDelete = []string {
   "/Squad/Parts/FuelTank/mk2*",
   "/Squad/Parts/FuelTank/mk3*",
   "/Squad/Parts/FuelTank/xenon*",
+  //StockBugFixModules
+  "/StockBugFixModules/BandwidthFix",
+  "/StockBugFixModules/SymmetryActionFix",
   // UKS/MKS
   "/UmbraSpaceIndustries/Kolonization/Flags",
   "/UmbraSpaceIndustries/Kolonization/Parts/MK3*",
