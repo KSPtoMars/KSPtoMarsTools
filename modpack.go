@@ -33,10 +33,20 @@ func main() {
   relevantPaths := installsteps.SetupPaths(inputArguments)
 
   // Download necessary mods
-  installsteps.DownloadNecessaryMods(inputArguments, &relevantPaths)
+  if err := installsteps.DownloadNecessaryMods(inputArguments, &relevantPaths); err != nil {
+      fmt.Println ("There has been a critical error during downloading! Aborting and rolling back...")
+      fmt.Println (err)
+      os.RemoveAll(relevantPaths.Ksp2mModsPath)
+      os.Exit(1)
+  }
 
   // Unpack all zip files
-  installsteps.UnpackAllZipFiles(&relevantPaths)
+  if err := installsteps.UnpackAllZipFiles(&relevantPaths); err != nil {
+      fmt.Println ("There has been a critical error during unpacking! Aborting and rolling back...")
+      fmt.Println (err)
+      os.RemoveAll(relevantPaths.Ksp2mModsPath)
+      os.Exit(1)
+  }
 
   // Remove outdated dependencies (especially if dependency will be installed anyway)
   installsteps.RemoveOldDependencies(&relevantPaths)
@@ -46,8 +56,9 @@ func main() {
 
   // Move mods to GameData Folder
   if err := installsteps.MoveMods(&relevantPaths); err != nil {
-    fmt.Println ("There has been an error during copying!")
+    fmt.Println ("There has been a critical error during copying! Aborting and rolling back...")
     fmt.Println (err)
+    os.RemoveAll(relevantPaths.Ksp2mModsPath)
     installsteps.RollBack(&relevantPaths, &backupPath)
   }
 
