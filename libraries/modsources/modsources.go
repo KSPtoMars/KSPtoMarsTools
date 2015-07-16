@@ -54,7 +54,7 @@ var Basemods = TwoDText{
   []string{"http://github.com/KSP-RO/RealHeat/releases/download/v1.0/RealHeat_v1.0.zip", "RealHeat.zip"},                                                          //KSP v1.0.4
   []string{"http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip"},                                                  //KSP v1.0.4
   []string{"http://github.com/snjo/Firespitter/releases/download/v7.1.4/Firespitter_7.1.4_PLUGIN.zip", "Firespitter.zip"},                                         //KSP v1.0.4
-  []string{"http://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.1/KSPtoMars_0.0.1.zip", "KSPtoMars.zip"},                                              //KSP v1.0.x
+  []string{"http://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.2/KSPtoMars_0.0.2.zip", "KSPtoMars.zip"},                                              //KSP v1.0.x
 }
 
 
