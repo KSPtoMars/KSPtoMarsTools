@@ -69,7 +69,7 @@ var Devmods = TwoDText{
   []string{"http://addons-origin.cursecdn.com/files/2246/104/PartWizard_1.2.2.zip", "PartWizard.zip"},                                                           //KSP v1.0.4
   []string{"http://addons-origin.cursecdn.com/files/2245/786/MechJeb2-2.5.3.0.zip", "mechjeb2.zip"},                                                             //KSP v1.0.4
   []string{"http://github.com/nodrog6/LightsOut/releases/download/v0.1.4/LightsOut-v0.1.4.zip", "LightsOut.zip"},                                                //KSP v1.0.4
-  []string{"http://github.com/CYBUTEK/KerbalEngineer/releases/download/1.0.17.0/KerbalEngineer-1.0.17.0.zip", "KerbalEngineer.zip"},                             //KSP v1.0.4
+  []string{"http://github.com/CYBUTEK/KerbalEngineer/releases/download/1.0.18.0/KerbalEngineer-1.0.18.0.zip", "KerbalEngineer.zip"},                             //KSP v1.0.4
   []string{"http://kerbalstuff.com/mod/776/Take%20Command/download/1.1.4", "TakeCommand.zip"},                                                                   //KSP v1.0.4
   []string{"http://github.com/malahx/QuickSearch/releases/download/v1.13/QuickSearch-1.13.zip", "QuickSearch.zip"},                                              //KSP v1.0.x
   []string{"http://github.com/malahx/QuickScroll/releases/download/v1.31/QuickScroll-1.31.zip", "QuickScroll.zip"}}                                              //KSP v1.0.x
