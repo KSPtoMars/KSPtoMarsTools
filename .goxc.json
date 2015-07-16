@@ -5,8 +5,8 @@
 		"publish-github"
 	],
 	"TasksExclude": [
-		"deb"
-		"deb-dev"
+		"deb",
+		"deb-dev",
 		"go-test"
 	],
 	"BuildConstraints": "linux,!arm windows darwin",
