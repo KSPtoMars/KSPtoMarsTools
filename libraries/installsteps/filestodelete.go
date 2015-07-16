@@ -155,4 +155,10 @@ var filesToDelete = []string {
   "/RSCapsuledyne/Parts/Nuke",
   // Realism Overhaul
   "/RealismOverhaul/Parts/NoseconeCockpit",
+  // Version files of all other mods
+  "/[A-Ja-j]*/*.version",
+  "/[Kk][A-Ra-r]*/*.version",
+  "/KSP-*/*.version",
+  "/[Kk][T-Zt-z]*/*.version",
+  "/[L-Zl-z]*/*.version",
 }
