@@ -69,4 +69,5 @@ func main() {
   installsteps.RemoveUnneededParts(&relevantPaths)
 
   fmt.Println ("Finished!")
+  
 }
