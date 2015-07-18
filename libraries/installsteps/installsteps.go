@@ -220,7 +220,7 @@ func MoveMods(relevantPaths *Paths) error {
     []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/AIES_Node_Patch.cfg/AIES_Node_Patch.cfg"), relevantPaths.GameDataPath + "/AIES_Node_Patch.cfg"},
     []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/Firespitter/Firespitter/Plugins/Firespitter.dll"), relevantPaths.GameDataPath + "/Firespitter/Plugins/Firespitter.dll"},
     []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/Firespitter/Firespitter/Plugins/FSfuelSwitchTweakscale.cfg"), relevantPaths.GameDataPath + "/Firespitter/Plugins/FSfuelSwitchTweakscale.cfg"},
-    []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/RO_TaurusHCV.cfg"), relevantPaths.GameDataPath + "/RealismOverhaul/GameData/REWORK/RO_TaurusHCV.cfg"},
+    []string {filepath.Join(relevantPaths.Ksp2mModsPath, "/RO_TaurusHCV.cfg"), relevantPaths.GameDataPath + "/RealismOverhaul/REWORK/RO_TaurusHCV.cfg"},
   }
   for _, fix := range configFixes {
     if err := helpers.CopyFile(fix[0], fix[1]); err != nil {
