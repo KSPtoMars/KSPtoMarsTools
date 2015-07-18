@@ -62,6 +62,8 @@ var filesToDelete = []string {
   // DMagic
   "/DMagicOrbitalScience/Flags",
   "/DMagicOrbitalScience/UniversalStorage",
+  //DiminishingRTG
+  "DiminishingRTG/RTGResourses.cfg",
   // KW Rocketry
   "/KWRocketry/Flags",
   "/KWRocketry/Parts/Fuel/KW_Universal_Tanks/[1|3-9]*",
