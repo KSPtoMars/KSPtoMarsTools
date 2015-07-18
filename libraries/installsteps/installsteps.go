@@ -186,7 +186,7 @@ func MoveMods(relevantPaths *Paths) error {
     "/HullcaMove-ItemDS",
     "/JDiminishingRTG/JDiminishingRTG_v1_3a/GameData",
     "/NebulaDecals",
-    "/ModularFlightIntegrator"
+    "/ModularFlightIntegrator",
     // dev install
     "/mechjeb2",
     "/VesselViewer",

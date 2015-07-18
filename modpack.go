@@ -16,7 +16,7 @@ func main() {
     os.Exit(1)
   }
 
-  fmt.Println("\nThis is v4.0.1-beta of the ksp2mars modpack script.\n")
+  fmt.Println("\nThis is v4.0.5-beta of the ksp2mars modpack script.\n")
 
   // Start with mod installation
   if (inputArguments.BeautyFlag) {
@@ -69,4 +69,5 @@ func main() {
   installsteps.RemoveUnneededParts(&relevantPaths)
 
   fmt.Println ("Finished!")
+  
 }
