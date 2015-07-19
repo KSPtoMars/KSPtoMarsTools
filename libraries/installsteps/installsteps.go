@@ -173,7 +173,6 @@ func MoveMods(relevantPaths *Paths) error {
   var customFolders = []string {
     // core install
     "/CrossFeedEnabler",
-    "/DeadlyReentry",
     "/RealFuels",
     "/RealHeat",
     "/RealSolarSystem",
