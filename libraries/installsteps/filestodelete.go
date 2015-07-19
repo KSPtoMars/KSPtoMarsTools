@@ -127,7 +127,6 @@ var filesToDelete = []string {
   "/Squad/Parts/FuelTank/fuelTankT400",
   "/Squad/Parts/FuelTank/fuelTankT800",
   "/Squad/Parts/FuelTank/fuelTankX*",
-  "/Squad/Parts/FuelTank/mk2*",
   "/Squad/Parts/FuelTank/mk3*",
   "/Squad/Parts/FuelTank/xenon*",
   //StockBugFixModules
