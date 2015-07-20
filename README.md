@@ -1,2 +1,2 @@
 # KSPtoMarsTools
-This is my temporary repository for tools used by KSPtoMars.
+This repository contains the tools to create a proper installation of all the mods necessary to run the KSPtoMars mission.

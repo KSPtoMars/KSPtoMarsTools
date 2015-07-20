@@ -1,0 +1,23 @@
+{
+	"ArtifactsDest": "/var/www/010-ksptomars.org/public/modreleases",
+	"Tasks": [
+		"default",
+		"publish-github"
+	],
+	"TasksExclude": [
+		"deb",
+		"deb-dev",
+		"go-test"
+	],
+	"BuildConstraints": "linux,!arm windows darwin",
+	"PackageVersion": "4.0.6",
+	"PrereleaseInfo": "beta",
+	"TaskSettings": {
+		"publish-github": {
+			"owner": "KSPtoMars",
+			"prerelease": true,
+			"repository": "KSPtoMarsTools"
+		}
+	},
+	"ConfigVersion": "0.9"
+}

@@ -1,29 +1,5 @@
 #
 # KSPtoMars Windows Modpack v1.7.2-dev
-# Written by Sven Frenzel (sven@frenzel.dk) with some contributions by Darko Pilav (darko.pilav@gmail.com)
-#
-# The MIT License (MIT)
-# 
-# Copyright (c) 2015 Sven Frenzel (sven@frenzel.dk)
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#  
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-#
 #
 
 [CmdletBinding()]
@@ -162,6 +138,7 @@ $baseModPack = @(
   @("http://kerbalstuff.com/mod/255/TweakableEverything/download/1.12", "TweakableEverything.zip"),                                                         #KSP v1.0.4
   @("http://github.com/Swamp-Ig/ProceduralParts/releases/download/v1.1.6/ProceduralParts-1.1.6.zip", "ProceduralParts.zip"),                                #KSP v1.0.4
   @("https://ksp.sarbian.com/jenkins/job/ModularFlightIntegrator/9/artifact/ModularFlightIntegrator-1.1.1.0.zip", "ModularFlightIntegrator.zip"),           #KSP v1.0.4
+  @("http://github.com/KSP-RO/RealHeat/releases/download/v1.0/RealHeat_v1.0.zip", "RealHeat.zip"),                                                          #KSP v1.0.4
   @("http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip")                                                   #KSP v1.0.4
 )
 
@@ -242,6 +219,7 @@ Remove-Item -force -recurse $ksp2mModsPath/FAR/GameData/ModularFlightIntegrator
 Remove-Item -force -recurse $ksp2mModsPath/FASA/GameData/JSI
 Remove-Item -force -recurse $ksp2mModsPath/RealFuels/CommunityResourcePack
 Remove-Item -force -recurse $ksp2mModsPath/RealFuels/SolverEngines
+Remove-Item -force -recurse $ksp2mModsPath/RealHeat/ModularFlightIntegrator
 Remove-Item -force -recurse $ksp2mModsPath/UniversalStorage/CommunityResourcePack
 
 # Move all the mods to GameData folder
@@ -255,6 +233,7 @@ foreach-Object {
 Copy-Item -force -recurse $ksp2mModsPath/CrossFeedEnabler/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/DeadlyReentry/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/RealFuels/* $gameDataPath
+Copy-Item -force -recurse $ksp2mModsPath/RealHeat/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/RealSolarSystem/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/Toolbar/Toolbar-1.7.9/GameData/* $gameDataPath
 Copy-Item -force -recurse $ksp2mModsPath/ksp-avc/* $gameDataPath
@@ -341,6 +320,14 @@ if (Test-Path -d $gameDataPath/AIES_Aerospace){
 if (Test-Path -d $gameDataPath/HabitatPack){
   Set-Location $gameDataPath/HabitatPack/Parts
   Remove-Item -Recurse -Force Basemount, orbitalorb
+  Set-Location $gameDataPath
+}
+
+# Deadly Reentry
+if (Test-Path -d $gameDataPath/DeadlyReentry){
+  Remove-Item -Recurse -Force $gameDataPath/DeadlyReentry/Plugins
+  Remove-Item -Recurse -Force $gameDataPath/DeadlyReentry/Sounds
+  Remove-Item -Force "$gameDataPath/DeadlyReentry/*.cfg"
   Set-Location $gameDataPath
 }
 
