@@ -39,11 +39,11 @@ func Unzip(zipFilePath, targetDir string) error {
     path := filepath.Join(targetDir, file.Name)
 
     if file.FileInfo().IsDir() {
-      if err := os.MkdirAll(path, file.Mode()); err != nil {
+      if err := os.MkdirAll(path, 0755); err != nil {
         return err
       }
     } else {
-      if err := os.MkdirAll(filepath.Dir(path), file.Mode()); err != nil {
+      if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
         return err
       }
       file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, file.Mode())
