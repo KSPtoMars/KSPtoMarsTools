@@ -201,7 +201,6 @@ func MoveMods(relevantPaths *Paths) error {
     "/EngineLighting/EngineLight/GameData",
     "/ImprovedChaseCam",
     "/PlanetShine/Alternate Colors/Real Solar System",
-    "/RoverWheelSounds",
   }
   if err := customMoveMods(relevantPaths, customFolders); err != nil {
     return err
@@ -240,7 +239,7 @@ func customMoveMods(relevantPaths *Paths, customPaths []string) error {
       return err
     }
   }
-  
+
   return nil
 }
 
