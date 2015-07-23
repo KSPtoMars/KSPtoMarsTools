@@ -160,9 +160,9 @@ var filesToDelete = []string {
   // Realism Overhaul
   "/RealismOverhaul/Parts/NoseconeCockpit",
   // Version files of all other mods
-  "/[A-Ja-j]*/*.version",
-  "/[Kk][A-Ra-r]*/*.version",
+  "/[0-9A-Ja-jL-Zl-z]*/*.version",
+  "/[Kk][A-Ra-rT-Zt-z]*/*.version",
   "/KSP-*/*.version",
-  "/[Kk][T-Zt-z]*/*.version",
-  "/[L-Zl-z]*/*.version",
+  "/*/*/*.version",
+  "/*/*/*/*.version",
 }
