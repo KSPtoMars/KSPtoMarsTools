@@ -56,6 +56,7 @@ var Basemods = TwoDText{
   []string{"http://github.com/snjo/Firespitter/releases/download/v7.1.4/Firespitter_7.1.4_PLUGIN.zip", "Firespitter.zip"},                                         //KSP v1.0.4
   []string{"http://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.2/KSPtoMars_0.0.2.zip", "KSPtoMars.zip"},                                              //KSP v1.0.x
   []string{"https://raw.githubusercontent.com/KSP-RO/RealismOverhaul/master/GameData/RealismOverhaul/REWORK/RO_TaurusHCV.cfg", "RO_TaurusHCV.cfg"},                //KSP v1.0.x
+  []string{"http://ksptomars.org/public/TalisarParts.zip", "TalisarParts.zip"},                                                                                    //KSP v1.0.x
 }
 
 

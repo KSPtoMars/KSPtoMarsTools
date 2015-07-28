@@ -152,6 +152,11 @@ var filesToDelete = []string {
   "/UniversalStorage/Flags",
   // TACLS
   "/ThunderAerospace/TacLifeSupport[A-Q]*",
+  // Talisar Parts
+  "TalisarParts/Resources",
+  "TalisarParts/Parts/Command",
+  "TalisarParts/Parts/FuelTank",
+  "TalisarParts/Parts/Science",
   // Taurus HCV
   "/RSCapsuledyne/Parts/Engine",
   "/RSCapsuledyne/Parts/FuelTank",
