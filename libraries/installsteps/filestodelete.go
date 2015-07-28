@@ -157,6 +157,7 @@ var filesToDelete = []string {
   "TalisarParts/Parts/Command",
   "TalisarParts/Parts/FuelTank",
   "TalisarParts/Parts/Science",
+  "TalisarParts/Parts/Structural",
   // Taurus HCV
   "/RSCapsuledyne/Parts/Engine",
   "/RSCapsuledyne/Parts/FuelTank",
