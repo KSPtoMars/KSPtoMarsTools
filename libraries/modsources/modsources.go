@@ -23,7 +23,7 @@ var Basemods = TwoDText{
   []string{"http://ksptomars.org/public/HabitatPack_04.1.zip", "HabitatPack.zip"},                                                                                 //KSP v?.?.?
   []string{"http://ksptomars.org/public/AIES_Aerospace151.zip", "AIES_Aerospace151.zip"},                                                                          //KSP v?.?.?
   []string{"http://dl.dropboxusercontent.com/u/72893034/AIES_Patches/AIES_Node_Patch.cfg.zip", "AIES_Node_Patch.cfg.zip"},                                         //KSP v?.?.?
-  []string{"https://github.com/Starwaster/DeadlyReentry/releases/download/7.2.1/DeadlyReentry_7.2.1_The_Melificent_Edition.zip", "DeadlyReentry.zip"},             //KSP v1.0.4
+  []string{"https://github.com/Starwaster/DeadlyReentry/releases/download/7.2.2/DeadlyReentry_7.2.2_The_Melificent_Edition.zip", "DeadlyReentry.zip"},             //KSP v1.0.4
   []string{"http://addons-origin.cursecdn.com/files/2246/556/KIS_v1.2.0.zip", "KIS.zip"},                                                                          //KSP v1.0.4
   []string{"http://addons-origin.cursecdn.com/files/2246/546/KAS_v0.5.3.zip", "KAS.zip"},                                                                          //KSP v1.0.4
   []string{"http://github.com/ferram4/Ferram-Aerospace-Research/releases/download/v0.15.4_Glauert/FAR_0_15_4_Glauert.zip", "FAR.zip"},                             //KSP v1.0.4
