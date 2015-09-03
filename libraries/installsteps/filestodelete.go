@@ -85,6 +85,19 @@ var filesToDelete = []string {
   "/MagicSmokeIndustries/Flags",
   // Kerbaltek
   "/Kerbaltek/Flags",
+  // Kanadarm
+  "RKE_Kanadarm/Flags",
+  "RKE_Kanadarm/Models/a*",
+  "RKE_Kanadarm/Models/e*",
+  "RKE_Kanadarm/Models/flag*",
+  "RKE_Kanadarm/Models/m*",
+  "RKE_Kanadarm/Models/r*",
+  "RKE_Kanadarm/Models/s*",
+  "RKE_Kanadarm/Parts/a*",
+  "RKE_Kanadarm/Parts/e*",
+  "RKE_Kanadarm/Parts/r*",
+  "RKE_Kanadarm/Parts/s*",
+  "RKE_Kanadarm/Sounds",
   // NovaPunch2
   "/NovaPunch2/Agencies",
   "/NovaPunch2/Flags",
