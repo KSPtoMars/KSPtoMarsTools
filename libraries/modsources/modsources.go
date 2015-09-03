@@ -58,6 +58,7 @@ var Basemods = TwoDText{
   []string{"http://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.2/KSPtoMars_0.0.2.zip", "KSPtoMars.zip"},                                              //KSP v1.0.x
   []string{"https://raw.githubusercontent.com/KSP-RO/RealismOverhaul/master/GameData/RealismOverhaul/REWORK/RO_TaurusHCV.cfg", "RO_TaurusHCV.cfg"},                //KSP v1.0.x
   []string{"http://taniwha.org/~bill/TalisarParts-1.0.0.zip", "TalisarParts.zip"},                                                                                 //KSP v1.0.x
+  []string{"https://kerbalstuff.com/mod/637/RKE%20Kanadarm/download/0.11", "Kanadarm.zip"},                                                                        //KSP v1.0.x
 }
 
 
