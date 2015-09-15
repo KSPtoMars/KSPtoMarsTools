@@ -55,7 +55,7 @@ var Basemods = TwoDText{
   []string{"http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip"},                                                  //KSP v1.0.4
   []string{"http://github.com/snjo/Firespitter/releases/download/v7.1.4/Firespitter_7.1.4_PLUGIN.zip", "Firespitter.zip"},                                         //KSP v1.0.4
   []string{"https://kerbalstuff.com/mod/352/SpaceY%20Heavy%20Lifters%20Parts%20Pack/download/1.0", "SpaceY.zip"},                                                  //KSP v1.0.x
-  []string{"http://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.2/KSPtoMars_0.0.2.zip", "KSPtoMars.zip"},                                              //KSP v1.0.x
+  []string{"http://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.3/KSPtoMars_0.0.3.zip", "KSPtoMars.zip"},                                              //KSP v1.0.x
   []string{"https://raw.githubusercontent.com/KSP-RO/RealismOverhaul/master/GameData/RealismOverhaul/REWORK/RO_TaurusHCV.cfg", "RO_TaurusHCV.cfg"},                //KSP v1.0.x
   []string{"http://taniwha.org/~bill/TalisarParts-1.0.0.zip", "TalisarParts.zip"},                                                                                 //KSP v1.0.x
   []string{"https://kerbalstuff.com/mod/637/RKE%20Kanadarm/download/0.11", "Kanadarm.zip"},                                                                        //KSP v1.0.x
