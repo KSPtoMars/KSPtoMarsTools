@@ -205,5 +205,5 @@ var filesToDelete = []string {
   "/KSP-*/*.version",
   "/*/*/*.version",
   "/*/*/*/*.version",
-  "/000_Toolbar/version.txt"
+  "/000_Toolbar/version.txt",
 }
