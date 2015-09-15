@@ -1,6 +1,9 @@
 package installsteps
 
 var filesToDelete = []string {
+  //AerojetKerbodyne
+  "/AerojetKerbodyne/Agencies",
+  "/AerojetKerbodyne/Flags",
   // AIES
   "/AIES_Aerospace/Aero",
   "/AIES_Aerospace/Command/AIESorbiterpod",

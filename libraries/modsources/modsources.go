@@ -60,6 +60,7 @@ var Basemods = TwoDText{
   []string{"http://taniwha.org/~bill/TalisarParts-1.0.0.zip", "TalisarParts.zip"},                                                                                 //KSP v1.0.x
   []string{"https://kerbalstuff.com/mod/637/RKE%20Kanadarm/download/0.11", "Kanadarm.zip"},                                                                        //KSP v1.0.x
   []string{"https://github.com/Saabstory88/KOS/raw/develop/Resources/GameData/kOS/Plugins/kOS.dll", "kOS.dll"},                                                    //KSP v1.0.x
+  []string{"https://beta.kerbalstuff.com/mod/139/Aerojet%20Kerbodyne/download/3.0.5"},                                                                             //KSP v1.0.x
 }
 
 
