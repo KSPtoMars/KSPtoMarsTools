@@ -201,7 +201,7 @@ func MoveMods(relevantPaths *Paths) error {
     "/EngineLighting/EngineLight/GameData",
     "/ImprovedChaseCam",
     "/PlanetShine/Alternate Colors/Real Solar System",
-    "/SpaceY-Lifters",
+    "/SpaceY",
   }
   if err := customMoveMods(relevantPaths, customFolders); err != nil {
     return err
