@@ -10,7 +10,7 @@
 		"go-test"
 	],
 	"BuildConstraints": "linux,!arm windows darwin",
-	"PackageVersion": "4.1.0",
+	"PackageVersion": "4.1.1",
 	"PrereleaseInfo": "beta",
 	"TaskSettings": {
 		"publish-github": {
