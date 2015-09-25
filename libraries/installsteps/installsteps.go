@@ -186,6 +186,7 @@ func MoveMods(relevantPaths *Paths) error {
     "/JDiminishingRTG/JDiminishingRTG_v1_3a/GameData",
     "/NebulaDecals",
     "/ModularFlightIntegrator",
+    "/Bobcat",
     // dev install
     "/mechjeb2",
     "/VesselViewer",
