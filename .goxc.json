@@ -10,11 +10,11 @@
 		"go-test"
 	],
 	"BuildConstraints": "linux,!arm windows darwin",
-	"PackageVersion": "4.1.1",
+	"PackageVersion": "4.1.2",
 	"PrereleaseInfo": "beta",
 	"TaskSettings": {
 		"publish-github": {
-			"body": "# Changelog\n* Fixed version number in application.\n* Added Kronal Vessel Viewer Mod.\n\n# General Info\nDownload the appropriate file.\nDarwin is OSX and 386 means you have a 32-bit OS (not the KSP install), while amd64 means you have a 64-bit OS.",
+			"body": "# Changelog\n* Updated KSPtoMarsMod to v0.0.4.\n\n# General Info\nDownload the appropriate file.\nDarwin is OSX and 386 means you have a 32-bit OS (not the KSP install), while amd64 means you have a 64-bit OS.",
 			"owner": "KSPtoMars",
 			"prerelease": true,
 			"repository": "KSPtoMarsTools"

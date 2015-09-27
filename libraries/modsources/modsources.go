@@ -23,7 +23,7 @@ var Basemods = TwoDText{
   []string{"http://ksptomars.org/public/HabitatPack_04.1.zip", "HabitatPack.zip"},                                                                                 //KSP v?.?.?
   []string{"http://ksptomars.org/public/AIES_Aerospace151.zip", "AIES_Aerospace151.zip"},                                                                          //KSP v?.?.?
   []string{"http://dl.dropboxusercontent.com/u/72893034/AIES_Patches/AIES_Node_Patch.cfg.zip", "AIES_Node_Patch.cfg.zip"},                                         //KSP v?.?.?
-  []string{"https://github.com/Starwaster/DeadlyReentry/releases/download/v7.2.2/DeadlyReentry_7.2.2_The_Melificent_Edition.zip", "DeadlyReentry.zip"},             //KSP v1.0.4
+  []string{"https://github.com/Starwaster/DeadlyReentry/releases/download/v7.2.2/DeadlyReentry_7.2.2_The_Melificent_Edition.zip", "DeadlyReentry.zip"},            //KSP v1.0.4
   []string{"http://addons-origin.cursecdn.com/files/2246/556/KIS_v1.2.0.zip", "KIS.zip"},                                                                          //KSP v1.0.4
   []string{"http://addons-origin.cursecdn.com/files/2246/546/KAS_v0.5.3.zip", "KAS.zip"},                                                                          //KSP v1.0.4
   []string{"http://github.com/ferram4/Ferram-Aerospace-Research/releases/download/v0.15.4_Glauert/FAR_0_15_4_Glauert.zip", "FAR.zip"},                             //KSP v1.0.4
@@ -55,12 +55,12 @@ var Basemods = TwoDText{
   []string{"http://github.com/BobPalmer/CommunityResourcePack/releases/download/0.4.3/CRP_0.4.3.zip", "CRP.zip"},                                                  //KSP v1.0.4
   []string{"http://github.com/snjo/Firespitter/releases/download/v7.1.4/Firespitter_7.1.4_PLUGIN.zip", "Firespitter.zip"},                                         //KSP v1.0.4
   []string{"https://kerbalstuff.com/mod/352/SpaceY%20Heavy%20Lifters%20Parts%20Pack/download/1.0", "SpaceY.zip"},                                                  //KSP v1.0.x
-  []string{"https://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.3/KSPtoMarsMod_0.0.3.zip", "KSPtoMars.zip"},                                          //KSP v1.0.x
+  []string{"https://github.com/KSPtoMars/KSPtoMarsMod/releases/download/v0.0.4/KSPtoMarsMod_0.0.4.zip", "KSPtoMars.zip"},                                          //KSP v1.0.x
   []string{"https://raw.githubusercontent.com/KSP-RO/RealismOverhaul/master/GameData/RealismOverhaul/REWORK/RO_TaurusHCV.cfg", "RO_TaurusHCV.cfg"},                //KSP v1.0.x
   []string{"http://taniwha.org/~bill/TalisarParts-1.0.0.zip", "TalisarParts.zip"},                                                                                 //KSP v1.0.x
   []string{"https://kerbalstuff.com/mod/637/RKE%20Kanadarm/download/0.11", "Kanadarm.zip"},                                                                        //KSP v1.0.x
   []string{"https://github.com/Saabstory88/KOS/raw/develop/Resources/GameData/kOS/Plugins/kOS.dll", "kOS.dll"},                                                    //KSP v1.0.x
-  []string{"https://kerbalstuff.com/mod/374/BobCat%27s%20Soviet%20Engine%20Pack/download/1.1", "Bobcat.zip"},                                                     //KSP v1.0.x
+  []string{"https://kerbalstuff.com/mod/374/BobCat%27s%20Soviet%20Engine%20Pack/download/1.1", "Bobcat.zip"},                                                      //KSP v1.0.x
 }
 
 
